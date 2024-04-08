@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "model.h"
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -12,10 +13,17 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(Model& model, QWidget *parent = nullptr);
     ~MainWindow();
+
+signals:
+    void submitTextInput(QString text);
+
+public slots:
+    void textEditingComplete();
 
 private:
     Ui::MainWindow *ui;
+    Model* model;
 };
 #endif // MAINWINDOW_H
