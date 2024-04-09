@@ -24,3 +24,11 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    ../../Morse Code Background copy.jpg \
+    Assets/Morse Code Background copy.jpg \
+    Morse Code Background copy.jpg
+
+RESOURCES += \
+    Assets/MorseCodeBackground.qrc
