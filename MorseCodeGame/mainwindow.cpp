@@ -4,8 +4,7 @@
 
 /**
  * @brief MainWindow::MainWindow
- * @param model
- * @param parent
+ * @author Eva Giddings and others
  */
 
 MainWindow::MainWindow(Model& model, QWidget *parent)
