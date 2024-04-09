@@ -2,6 +2,11 @@
 #include "model.h"
 #include "ui_mainwindow.h"
 
+/**
+ * @brief MainWindow::MainWindow
+ * @param model
+ * @param parent
+ */
 
 MainWindow::MainWindow(Model& model, QWidget *parent)
     : QMainWindow(parent)
