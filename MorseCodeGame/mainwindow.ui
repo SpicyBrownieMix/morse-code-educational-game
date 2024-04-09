@@ -127,10 +127,10 @@
        </colorrole>
        <colorrole role="PlaceholderText">
         <brush brushstyle="SolidPattern">
-         <color alpha="143">
-          <red>99</red>
-          <green>56</green>
-          <blue>36</blue>
+         <color alpha="152">
+          <red>43</red>
+          <green>10</green>
+          <blue>10</blue>
          </color>
         </brush>
        </colorrole>
@@ -246,10 +246,10 @@
        </colorrole>
        <colorrole role="PlaceholderText">
         <brush brushstyle="SolidPattern">
-         <color alpha="143">
-          <red>99</red>
-          <green>56</green>
-          <blue>36</blue>
+         <color alpha="152">
+          <red>43</red>
+          <green>10</green>
+          <blue>10</blue>
          </color>
         </brush>
        </colorrole>
@@ -347,10 +347,10 @@
        </colorrole>
        <colorrole role="PlaceholderText">
         <brush brushstyle="SolidPattern">
-         <color alpha="143">
-          <red>99</red>
-          <green>56</green>
-          <blue>36</blue>
+         <color alpha="152">
+          <red>43</red>
+          <green>10</green>
+          <blue>10</blue>
          </color>
         </brush>
        </colorrole>
@@ -397,8 +397,72 @@
      <pixmap resource="Assets/MorseCodeBackground.qrc">:/assets/MorseCodeBackground.jpg</pixmap>
     </property>
    </widget>
+   <widget class="QLabel" name="morsePrinter">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>270</y>
+      <width>421</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="216">
+          <red>43</red>
+          <green>10</green>
+          <blue>10</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="217">
+          <red>43</red>
+          <green>10</green>
+          <blue>10</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="216">
+          <red>43</red>
+          <green>10</green>
+          <blue>10</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="217">
+          <red>43</red>
+          <green>10</green>
+          <blue>10</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled/>
+     </palette>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>70</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>----  ----  ----</string>
+    </property>
+   </widget>
    <zorder>background</zorder>
    <zorder>textInputBox</zorder>
+   <zorder>morsePrinter</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

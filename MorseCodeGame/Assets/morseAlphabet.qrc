@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/assets">
+        <file>morseAlphabet.txt</file>
+    </qresource>
+</RCC>

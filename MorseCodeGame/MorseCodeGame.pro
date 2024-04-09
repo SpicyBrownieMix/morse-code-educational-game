@@ -28,7 +28,12 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     ../../Morse Code Background copy.jpg \
     Assets/Morse Code Background copy.jpg \
+    Assets/MorseCodeBackground.jpg \
+    Assets/MorseDashSound.mp3 \
+    Assets/MorseDotSound.mp3 \
+    Assets/morseAlphabet.txt \
     Morse Code Background copy.jpg
 
 RESOURCES += \
-    Assets/MorseCodeBackground.qrc
+    Assets/MorseCodeBackground.qrc \
+    Assets/morseAlphabet.qrc
