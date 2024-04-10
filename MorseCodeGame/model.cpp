@@ -9,13 +9,11 @@ using namespace std;
 
 Model::Model(QObject *parent) : QObject{parent}
 {
-    timerInterval = 100;
+    onScreenLetterCounter = 0;
     morseString = "";
     fillMorseAlphabetMap();
 
-    timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &Model::sendMorseHelper);
-    QTimer::singleShot(1000, this, [this]() {sendMorse("cat");});
+    QTimer::singleShot(1000, this, [this]() {sendMorse("supercalifragilistic");});
 }
 
 void Model::textInputEntered(QString text)
@@ -45,52 +43,42 @@ void Model::sendMorse(string word)
         morseString += MORSE_ALPHABET.at(c) + "  ";
     }
 
-    char first = morseString[0];
-    morseString = morseString.substr(1);
-    if (first == '-')
-    {
-        emit sendMorseChar("-");
-        emit playDashSound();
-        timerInterval = 520;
-    }
-    else if (first == '.')
-    {
-        emit sendMorseChar("•");
-        emit playDotSound();
-        timerInterval = 392;
-    }
-    else
-        return;
-
-    timer->start(timerInterval);
+    QTimer::singleShot(100, this, &Model::sendMorseHelper);
 }
 
 void Model::sendMorseHelper()
 {
-    if (morseString.size() == 0)
+    // if there are already 3 letters on screen, clear them before writing new ones
+    if (onScreenLetterCounter == 6)
     {
-        timer->stop();
-        return;
+        emit clearMorseBox();
+        onScreenLetterCounter = 0;
     }
+
+    // if this is the end of the string, stop going.
+    if (morseString.size() == 0)
+        return;
+
+    // send the first letter of the string to the view, and then remove that letter from the string.
     char c = morseString[0];
     morseString = morseString.substr(1);
-
     if (c == '-')
     {
-        timerInterval = 520;
-        emit sendMorseChar("-");
         emit playDashSound();
+        QTimer::singleShot(600, this, &Model::sendMorseHelper);
+        emit sendMorseChar("-");
     }
     else if (c == ' ')
     {
-        timerInterval = 500;
+        QTimer::singleShot(100, this, &Model::sendMorseHelper);
         emit sendMorseChar(" ");
+        onScreenLetterCounter++;
     }
     else if (c == '.')
     {
-        timerInterval = 392;
-        emit sendMorseChar("•");
         emit playDotSound();
+        QTimer::singleShot(600, this, &Model::sendMorseHelper);
+        emit sendMorseChar("•");
     }
     else
         return;

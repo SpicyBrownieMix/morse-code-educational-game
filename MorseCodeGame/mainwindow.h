@@ -4,6 +4,7 @@
 #include "model.h"
 #include <QMainWindow>
 #include <string>
+#include <QtMultimedia>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -30,5 +31,9 @@ public slots:
 private:
     Ui::MainWindow *ui;
     Model* model;
+    QMediaPlayer *dotPlayer;
+    QAudioOutput *dotAudioOutput;
+    QMediaPlayer *dashPlayer;
+    QAudioOutput *dashAudioOutput;
 };
 #endif // MAINWINDOW_H
