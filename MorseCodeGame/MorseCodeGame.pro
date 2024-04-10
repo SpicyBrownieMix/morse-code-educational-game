@@ -35,5 +35,4 @@ DISTFILES += \
     Morse Code Background copy.jpg
 
 RESOURCES += \
-    Assets/MorseCodeBackground.qrc \
-    Assets/morseAlphabet.qrc
+    Assets/Assets.qrc

@@ -3,6 +3,7 @@
 
 #include "model.h"
 #include <QMainWindow>
+#include <string>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,6 +22,10 @@ signals:
 
 public slots:
     void textEditingComplete();
+    void playDotSound();
+    void playDashSound();
+    void recieveMorseChar(std::string s);
+    void clearMorseBox();
 
 private:
     Ui::MainWindow *ui;

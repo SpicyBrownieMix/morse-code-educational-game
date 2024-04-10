@@ -457,7 +457,7 @@
      </font>
     </property>
     <property name="text">
-     <string>----  ----  ----</string>
+     <string/>
     </property>
    </widget>
    <zorder>background</zorder>
