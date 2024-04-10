@@ -1,8 +1,8 @@
 <RCC>
     <qresource prefix="/assets">
-        <file>MorseDashSound.mp3</file>
-        <file>MorseDotSound.mp3</file>
         <file>morseAlphabet.txt</file>
         <file>MorseCodeBackground.jpg</file>
+        <file>MorseDotSound.mp3</file>
+        <file>MorseDashSound.mp3</file>
     </qresource>
 </RCC>

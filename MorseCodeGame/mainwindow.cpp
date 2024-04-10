@@ -2,6 +2,7 @@
 #include "model.h"
 #include "ui_mainwindow.h"
 #include <iostream>
+#include <QtMultimedia>
 
 using std::string;
 
@@ -16,6 +17,20 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 {
     ui->setupUi(this);
     this->model = &model;
+
+    // setup player for "dot" sound
+    dotPlayer = new QMediaPlayer;
+    dotAudioOutput = new QAudioOutput;
+    dotPlayer->setAudioOutput(dotAudioOutput);
+    dotAudioOutput->setVolume(50);
+    dotPlayer->setSource(QUrl("qrc:/assets/MorseDotSound.mp3"));
+
+    // setup player for "dash" sound
+    dashPlayer = new QMediaPlayer;
+    dashAudioOutput = new QAudioOutput;
+    dashPlayer->setAudioOutput(dashAudioOutput);
+    dashAudioOutput->setVolume(50);
+    dashPlayer->setSource(QUrl("qrc:/assets/MorseDashSound.mp3"));
 
     connect(ui->textInputBox, &QLineEdit::editingFinished, this, &MainWindow::textEditingComplete);
     connect(this, &MainWindow::submitTextInput, &model, &Model::textInputEntered);
@@ -38,12 +53,12 @@ void MainWindow::textEditingComplete()
 
 void MainWindow::playDashSound()
 {
-
+    dashPlayer->play();
 }
 
 void MainWindow::playDotSound()
 {
-
+    dotPlayer->play();
 }
 
 void MainWindow::recieveMorseChar(string s)
