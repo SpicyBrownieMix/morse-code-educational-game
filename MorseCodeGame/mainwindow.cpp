@@ -18,16 +18,19 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     ui->setupUi(this);
     this->model = &model;
 
+    ui->CaptainDialogueBox->setVisible(false);
+    ui->CaptainDialogueText->setVisible(false);
+
     // setup player for "dot" sound
     dotPlayer = new QMediaPlayer;
-    dotAudioOutput = new QAudioOutput;
+    dotAudioOutput = new QAudioOutput;
     dotPlayer->setAudioOutput(dotAudioOutput);
     dotAudioOutput->setVolume(50);
     dotPlayer->setSource(QUrl("qrc:/assets/MorseDotSound.mp3"));
 
     // setup player for "dash" sound
     dashPlayer = new QMediaPlayer;
-    dashAudioOutput = new QAudioOutput;
+    dashAudioOutput = new QAudioOutput;
     dashPlayer->setAudioOutput(dashAudioOutput);
     dashAudioOutput->setVolume(50);
     dashPlayer->setSource(QUrl("qrc:/assets/MorseDashSound.mp3"));
@@ -39,6 +42,9 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     connect(&model, &Model::playDashSound, this, &MainWindow::playDashSound);
     connect(&model, &Model::sendMorseChar, this, &MainWindow::recieveMorseChar);
     connect(&model, &Model::clearMorseBox, this, &MainWindow::clearMorseBox);
+
+    connect(&model, &Model::toggleCaptain, this, &MainWindow::toggleCaptain);
+    connect(&model, &Model::sendCaptainText, this, &MainWindow::showCaptainText);
 }
 
 MainWindow::~MainWindow()
@@ -71,4 +77,15 @@ void MainWindow::recieveMorseChar(string s)
 void MainWindow::clearMorseBox()
 {
     ui->morsePrinter->setText("");
+}
+
+void MainWindow::toggleCaptain()
+{
+    ui->CaptainDialogueBox->setVisible(!ui->CaptainDialogueBox->isVisible());
+    ui->CaptainDialogueText->setVisible(!ui->CaptainDialogueText->isVisible());
+}
+
+void MainWindow::showCaptainText(QString text)
+{
+    ui->CaptainDialogueText->setText(text);
 }

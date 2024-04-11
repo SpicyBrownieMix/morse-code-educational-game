@@ -18,6 +18,8 @@ Model::Model(QObject *parent) : QObject{parent}
 
 void Model::textInputEntered(QString text)
 {
+    emit toggleCaptain();   // REMOVE LATER
+    emit sendCaptainText(text); // REMOVE LATER
     //Receive text and check it against the correct letters.
 }
 

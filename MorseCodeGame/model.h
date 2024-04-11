@@ -20,6 +20,8 @@ signals:
     void playDotSound();
     void playDashSound();
     void clearMorseBox();
+    void toggleCaptain();
+    void sendCaptainText(QString text);
 
 private:
     std::map<char,std::string> MORSE_ALPHABET; // maps the letters of the alphabet to morse code

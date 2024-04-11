@@ -27,6 +27,8 @@ public slots:
     void playDashSound();
     void recieveMorseChar(std::string s);
     void clearMorseBox();
+    void toggleCaptain();
+    void showCaptainText(QString text);
 
 private:
     Ui::MainWindow *ui;
