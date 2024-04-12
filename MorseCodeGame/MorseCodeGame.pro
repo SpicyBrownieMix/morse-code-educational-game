@@ -39,7 +39,9 @@ DISTFILES += \
     Assets/MorseDashSound.mp3 \
     Assets/MorseDotSound.mp3 \
     Assets/morseAlphabet.txt \
-    Morse Code Background copy.jpg
+    Morse Code Background copy.jpg \
+    level1 \
+    level2
 
 RESOURCES += \
     Assets/Assets.qrc
