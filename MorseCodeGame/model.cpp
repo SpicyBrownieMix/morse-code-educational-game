@@ -11,6 +11,7 @@ Model::Model(QObject *parent) : QObject{parent}
 {
     onScreenLetterCounter = 0;
     morseString = "";
+    message = "";
     fillMorseAlphabetMap();
 
     QTimer::singleShot(1000, this, [this]() {sendMorse("supercalifragilistic");});
@@ -18,9 +19,38 @@ Model::Model(QObject *parent) : QObject{parent}
 
 void Model::textInputEntered(QString text)
 {
-    emit toggleCaptain();   // REMOVE LATER
-    emit sendCaptainText(text); // REMOVE LATER
+    bool correct = true;
     //Receive text and check it against the correct letters.
+    QString incorrectString = "You got these wrong: ";
+    if(text.length() != message.length())
+    {
+        correct = false;
+        emit toggleCaptain();
+        emit sendCaptainText("The message length is incorrect.");
+        return;
+    }
+    for (int i = 0; i < message.length(); i++)
+    {
+        if(text[i] != message[i])
+        {
+            incorrectString.append(text[i]);
+            incorrectString.append(", ");
+            correct = false;
+        }
+    }
+
+    if(!correct)
+    {
+        incorrectString.erase(incorrectString.end()-2, incorrectString.end());
+        emit toggleCaptain();
+        emit sendCaptainText(incorrectString);
+    }
+    else
+    {
+        emit toggleCaptain();
+        emit sendCaptainText("Hooray, you got it right!");
+    }
+
 }
 
 void Model::fillMorseAlphabetMap()
@@ -40,6 +70,8 @@ void Model::fillMorseAlphabetMap()
 
 void Model::sendMorse(string word)
 {
+    message = word;
+
     for (char c : word)
     {
         morseString += MORSE_ALPHABET.at(c) + "  ";
