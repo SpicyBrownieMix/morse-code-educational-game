@@ -505,12 +505,26 @@
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="showAllButton">
+    <property name="geometry">
+     <rect>
+      <x>579</x>
+      <y>580</y>
+      <width>151</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Show Entire Message</string>
+    </property>
+   </widget>
    <zorder>background</zorder>
    <zorder>textInputBox</zorder>
    <zorder>morsePrinter</zorder>
    <zorder>CaptainDialogueBox</zorder>
    <zorder>CaptainDialogueText</zorder>
    <zorder>referenceSheetButton</zorder>
+   <zorder>showAllButton</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

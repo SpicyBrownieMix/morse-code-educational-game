@@ -6,6 +6,7 @@
 #include <string>
 #include <QtMultimedia>
 #include "referencesheetdialog.h"
+#include "showalldialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -30,7 +31,8 @@ public slots:
     void clearMorseBox();
     void toggleCaptain();
     void showCaptainText(QString text);
-    void showCanvasPressed();
+    void showRefrenceSheet();
+    void showEntireMessage();
 
 private:
     Ui::MainWindow *ui;
@@ -40,5 +42,6 @@ private:
     QMediaPlayer *dashPlayer;
     QAudioOutput *dashAudioOutput;
     ReferenceSheetDialog* referenceSheetDialog;
+    ShowAllDialog* showAllDialog;
 };
 #endif // MAINWINDOW_H

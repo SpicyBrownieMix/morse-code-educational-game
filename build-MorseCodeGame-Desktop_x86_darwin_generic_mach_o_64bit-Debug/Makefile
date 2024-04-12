@@ -55,18 +55,22 @@ OBJECTS_DIR   = ./
 SOURCES       = ../MorseCodeGame/main.cpp \
 		../MorseCodeGame/mainwindow.cpp \
 		../MorseCodeGame/model.cpp \
-		../MorseCodeGame/referencesheetdialog.cpp qrc_Assets.cpp \
+		../MorseCodeGame/referencesheetdialog.cpp \
+		../MorseCodeGame/showalldialog.cpp qrc_Assets.cpp \
 		moc_mainwindow.cpp \
 		moc_model.cpp \
-		moc_referencesheetdialog.cpp
+		moc_referencesheetdialog.cpp \
+		moc_showalldialog.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		model.o \
 		referencesheetdialog.o \
+		showalldialog.o \
 		qrc_Assets.o \
 		moc_mainwindow.o \
 		moc_model.o \
-		moc_referencesheetdialog.o
+		moc_referencesheetdialog.o \
+		moc_showalldialog.o
 DIST          = ../../Morse \
 		../MorseCodeGame/Code \
 		../MorseCodeGame/Background \
@@ -310,10 +314,12 @@ DIST          = ../../Morse \
 		../../../Qt/6.6.3/macos/mkspecs/features/lex.prf \
 		../MorseCodeGame/MorseCodeGame.pro ../MorseCodeGame/mainwindow.h \
 		../MorseCodeGame/model.h \
-		../MorseCodeGame/referencesheetdialog.h ../MorseCodeGame/main.cpp \
+		../MorseCodeGame/referencesheetdialog.h \
+		../MorseCodeGame/showalldialog.h ../MorseCodeGame/main.cpp \
 		../MorseCodeGame/mainwindow.cpp \
 		../MorseCodeGame/model.cpp \
-		../MorseCodeGame/referencesheetdialog.cpp
+		../MorseCodeGame/referencesheetdialog.cpp \
+		../MorseCodeGame/showalldialog.cpp
 QMAKE_TARGET  = MorseCodeGame
 DESTDIR       = 
 TARGET        = MorseCodeGame.app/Contents/MacOS/MorseCodeGame
@@ -334,7 +340,7 @@ include /Users/spencer/Qt/6.6.3/macos/mkspecs/features/mac/sdk.mk
 first: all
 ####### Build rules
 
-MorseCodeGame.app/Contents/MacOS/MorseCodeGame: ui_mainwindow.h ui_referencesheetdialog.h $(OBJECTS)  
+MorseCodeGame.app/Contents/MacOS/MorseCodeGame: ui_mainwindow.h ui_referencesheetdialog.h ui_showalldialog.h $(OBJECTS)  
 	@test -d MorseCodeGame.app/Contents/MacOS/ || mkdir -p MorseCodeGame.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET)  $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -828,9 +834,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../MorseCodeGame/Assets/Assets.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../MorseCodeGame/mainwindow.h ../MorseCodeGame/model.h ../MorseCodeGame/referencesheetdialog.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../MorseCodeGame/main.cpp ../MorseCodeGame/mainwindow.cpp ../MorseCodeGame/model.cpp ../MorseCodeGame/referencesheetdialog.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../MorseCodeGame/mainwindow.ui ../MorseCodeGame/referencesheetdialog.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../MorseCodeGame/mainwindow.h ../MorseCodeGame/model.h ../MorseCodeGame/referencesheetdialog.h ../MorseCodeGame/showalldialog.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../MorseCodeGame/main.cpp ../MorseCodeGame/mainwindow.cpp ../MorseCodeGame/model.cpp ../MorseCodeGame/referencesheetdialog.cpp ../MorseCodeGame/showalldialog.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../MorseCodeGame/mainwindow.ui ../MorseCodeGame/referencesheetdialog.ui ../MorseCodeGame/showalldialog.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -868,9 +874,9 @@ qrc_Assets.cpp: ../MorseCodeGame/Assets/Assets.qrc \
 		../MorseCodeGame/Assets/morseAlphabet.txt
 	/Users/spencer/Qt/6.6.3/macos/libexec/rcc -name Assets --no-zstd ../MorseCodeGame/Assets/Assets.qrc -o qrc_Assets.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_model.cpp moc_referencesheetdialog.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_model.cpp moc_referencesheetdialog.cpp moc_showalldialog.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_model.cpp moc_referencesheetdialog.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_model.cpp moc_referencesheetdialog.cpp moc_showalldialog.cpp
 moc_mainwindow.cpp: ../MorseCodeGame/mainwindow.h \
 		../MorseCodeGame/model.h \
 		../../../Qt/6.6.3/macos/lib/QtCore.framework/Headers/QObject \
@@ -913,6 +919,7 @@ moc_mainwindow.cpp: ../MorseCodeGame/mainwindow.h \
 		../MorseCodeGame/referencesheetdialog.h \
 		../../../Qt/6.6.3/macos/lib/QtWidgets.framework/Headers/QDialog \
 		../../../Qt/6.6.3/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../MorseCodeGame/showalldialog.h \
 		../../../Qt/6.6.3/macos/libexec/moc
 	/Users/spencer/Qt/6.6.3/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/spencer/Qt/6.6.3/macos/mkspecs/macx-clang -I/Users/spencer/Projects/cs3505-assignment9-z/MorseCodeGame -I/Users/spencer/Qt/6.6.3/macos/lib/QtMultimedia.framework/Headers -I/Users/spencer/Qt/6.6.3/macos/lib/QtWidgets.framework/Headers -I/Users/spencer/Qt/6.6.3/macos/lib/QtGui.framework/Headers -I/Users/spencer/Qt/6.6.3/macos/lib/QtNetwork.framework/Headers -I/Users/spencer/Qt/6.6.3/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/spencer/Qt/6.6.3/macos/lib ../MorseCodeGame/mainwindow.h -o moc_mainwindow.cpp
 
@@ -930,13 +937,19 @@ moc_referencesheetdialog.cpp: ../MorseCodeGame/referencesheetdialog.h \
 		../../../Qt/6.6.3/macos/libexec/moc
 	/Users/spencer/Qt/6.6.3/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/spencer/Qt/6.6.3/macos/mkspecs/macx-clang -I/Users/spencer/Projects/cs3505-assignment9-z/MorseCodeGame -I/Users/spencer/Qt/6.6.3/macos/lib/QtMultimedia.framework/Headers -I/Users/spencer/Qt/6.6.3/macos/lib/QtWidgets.framework/Headers -I/Users/spencer/Qt/6.6.3/macos/lib/QtGui.framework/Headers -I/Users/spencer/Qt/6.6.3/macos/lib/QtNetwork.framework/Headers -I/Users/spencer/Qt/6.6.3/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/spencer/Qt/6.6.3/macos/lib ../MorseCodeGame/referencesheetdialog.h -o moc_referencesheetdialog.cpp
 
+moc_showalldialog.cpp: ../MorseCodeGame/showalldialog.h \
+		../../../Qt/6.6.3/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../Qt/6.6.3/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../Qt/6.6.3/macos/libexec/moc
+	/Users/spencer/Qt/6.6.3/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/spencer/Qt/6.6.3/macos/mkspecs/macx-clang -I/Users/spencer/Projects/cs3505-assignment9-z/MorseCodeGame -I/Users/spencer/Qt/6.6.3/macos/lib/QtMultimedia.framework/Headers -I/Users/spencer/Qt/6.6.3/macos/lib/QtWidgets.framework/Headers -I/Users/spencer/Qt/6.6.3/macos/lib/QtGui.framework/Headers -I/Users/spencer/Qt/6.6.3/macos/lib/QtNetwork.framework/Headers -I/Users/spencer/Qt/6.6.3/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/spencer/Qt/6.6.3/macos/lib ../MorseCodeGame/showalldialog.h -o moc_showalldialog.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_referencesheetdialog.h
+compiler_uic_make_all: ui_mainwindow.h ui_referencesheetdialog.h ui_showalldialog.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_referencesheetdialog.h
+	-$(DEL_FILE) ui_mainwindow.h ui_referencesheetdialog.h ui_showalldialog.h
 ui_mainwindow.h: ../MorseCodeGame/mainwindow.ui \
 		../../../Qt/6.6.3/macos/libexec/uic
 	/Users/spencer/Qt/6.6.3/macos/libexec/uic ../MorseCodeGame/mainwindow.ui -o ui_mainwindow.h
@@ -944,6 +957,10 @@ ui_mainwindow.h: ../MorseCodeGame/mainwindow.ui \
 ui_referencesheetdialog.h: ../MorseCodeGame/referencesheetdialog.ui \
 		../../../Qt/6.6.3/macos/libexec/uic
 	/Users/spencer/Qt/6.6.3/macos/libexec/uic ../MorseCodeGame/referencesheetdialog.ui -o ui_referencesheetdialog.h
+
+ui_showalldialog.h: ../MorseCodeGame/showalldialog.ui \
+		../../../Qt/6.6.3/macos/libexec/uic
+	/Users/spencer/Qt/6.6.3/macos/libexec/uic ../MorseCodeGame/showalldialog.ui -o ui_showalldialog.h
 
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
@@ -999,6 +1016,7 @@ main.o: ../MorseCodeGame/main.cpp ../MorseCodeGame/mainwindow.h \
 		../MorseCodeGame/referencesheetdialog.h \
 		../../../Qt/6.6.3/macos/lib/QtWidgets.framework/Headers/QDialog \
 		../../../Qt/6.6.3/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../MorseCodeGame/showalldialog.h \
 		../../../Qt/6.6.3/macos/lib/QtWidgets.framework/Headers/QApplication \
 		../../../Qt/6.6.3/macos/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../MorseCodeGame/main.cpp
@@ -1045,6 +1063,7 @@ mainwindow.o: ../MorseCodeGame/mainwindow.cpp ../MorseCodeGame/mainwindow.h \
 		../MorseCodeGame/referencesheetdialog.h \
 		../../../Qt/6.6.3/macos/lib/QtWidgets.framework/Headers/QDialog \
 		../../../Qt/6.6.3/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../MorseCodeGame/showalldialog.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../MorseCodeGame/mainwindow.cpp
 
@@ -1065,6 +1084,12 @@ referencesheetdialog.o: ../MorseCodeGame/referencesheetdialog.cpp ../MorseCodeGa
 		ui_referencesheetdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o referencesheetdialog.o ../MorseCodeGame/referencesheetdialog.cpp
 
+showalldialog.o: ../MorseCodeGame/showalldialog.cpp ../MorseCodeGame/showalldialog.h \
+		../../../Qt/6.6.3/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../Qt/6.6.3/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		ui_showalldialog.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o showalldialog.o ../MorseCodeGame/showalldialog.cpp
+
 qrc_Assets.o: qrc_Assets.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_Assets.o qrc_Assets.cpp
 
@@ -1076,6 +1101,9 @@ moc_model.o: moc_model.cpp
 
 moc_referencesheetdialog.o: moc_referencesheetdialog.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_referencesheetdialog.o moc_referencesheetdialog.cpp
+
+moc_showalldialog.o: moc_showalldialog.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_showalldialog.o moc_showalldialog.cpp
 
 ####### Install
 

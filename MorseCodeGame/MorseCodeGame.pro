@@ -13,16 +13,19 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     model.cpp \
-    referencesheetdialog.cpp
+    referencesheetdialog.cpp \
+    showalldialog.cpp
 
 HEADERS += \
     mainwindow.h \
     model.h \
-    referencesheetdialog.h
+    referencesheetdialog.h \
+    showalldialog.h
 
 FORMS += \
     mainwindow.ui \
-    referencesheetdialog.ui
+    referencesheetdialog.ui \
+    showalldialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

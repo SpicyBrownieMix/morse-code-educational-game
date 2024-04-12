@@ -31,6 +31,7 @@ public:
     QLabel *CaptainDialogueBox;
     QLabel *CaptainDialogueText;
     QPushButton *referenceSheetButton;
+    QPushButton *showAllButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -142,6 +143,9 @@ public:
         referenceSheetButton = new QPushButton(centralwidget);
         referenceSheetButton->setObjectName("referenceSheetButton");
         referenceSheetButton->setGeometry(QRect(90, 610, 181, 141));
+        showAllButton = new QPushButton(centralwidget);
+        showAllButton->setObjectName("showAllButton");
+        showAllButton->setGeometry(QRect(579, 580, 151, 32));
         MainWindow->setCentralWidget(centralwidget);
         background->raise();
         textInputBox->raise();
@@ -149,6 +153,7 @@ public:
         CaptainDialogueBox->raise();
         CaptainDialogueText->raise();
         referenceSheetButton->raise();
+        showAllButton->raise();
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
         menubar->setGeometry(QRect(0, 0, 1000, 24));
@@ -172,6 +177,7 @@ public:
         CaptainDialogueBox->setText(QCoreApplication::translate("MainWindow", "Put Captain Dialogue Here", nullptr));
         CaptainDialogueText->setText(QCoreApplication::translate("MainWindow", "Captain Dialogue Text", nullptr));
         referenceSheetButton->setText(QString());
+        showAllButton->setText(QCoreApplication::translate("MainWindow", "Show Entire Message", nullptr));
     } // retranslateUi
 
 };
