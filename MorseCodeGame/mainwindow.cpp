@@ -3,6 +3,7 @@
 #include "ui_mainwindow.h"
 #include <iostream>
 #include <QtMultimedia>
+#include "referencesheetdialog.h"
 
 using std::string;
 
@@ -17,6 +18,8 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 {
     ui->setupUi(this);
     this->model = &model;
+
+    referenceSheetDialog = new ReferenceSheetDialog(this);
 
     ui->CaptainDialogueBox->setVisible(false);
     ui->CaptainDialogueText->setVisible(false);
@@ -45,6 +48,8 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 
     connect(&model, &Model::toggleCaptain, this, &MainWindow::toggleCaptain);
     connect(&model, &Model::sendCaptainText, this, &MainWindow::showCaptainText);
+
+    connect(ui->referenceSheetButton, &QPushButton::clicked, this, &MainWindow::showCanvasPressed);
 }
 
 MainWindow::~MainWindow()
@@ -88,4 +93,10 @@ void MainWindow::toggleCaptain()
 void MainWindow::showCaptainText(QString text)
 {
     ui->CaptainDialogueText->setText(text);
+}
+
+void MainWindow::showCanvasPressed()
+{
+    referenceSheetDialog->setModal(true);
+    referenceSheetDialog->show();
 }

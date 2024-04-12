@@ -492,11 +492,25 @@
      <string>Captain Dialogue Text</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="referenceSheetButton">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>610</y>
+      <width>181</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>background</zorder>
    <zorder>textInputBox</zorder>
    <zorder>morsePrinter</zorder>
    <zorder>CaptainDialogueBox</zorder>
    <zorder>CaptainDialogueText</zorder>
+   <zorder>referenceSheetButton</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -504,7 +518,7 @@
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>26</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>

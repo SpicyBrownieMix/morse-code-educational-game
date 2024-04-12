@@ -12,14 +12,17 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    model.cpp
+    model.cpp \
+    referencesheetdialog.cpp
 
 HEADERS += \
     mainwindow.h \
-    model.h
+    model.h \
+    referencesheetdialog.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    referencesheetdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
