@@ -22,6 +22,7 @@ public:
 
 signals:
     void submitTextInput(QString text);
+    void refrenceOpened();
 
 public slots:
     void textEditingComplete();
@@ -33,6 +34,7 @@ public slots:
     void showCaptainText(QString text);
     void showRefrenceSheet();
     void showEntireMessage();
+    void showCurrentStreak(int streak);
 
 private:
     Ui::MainWindow *ui;

@@ -518,6 +518,19 @@
      <string>Show Entire Message</string>
     </property>
    </widget>
+   <widget class="QLabel" name="streaksLabel">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>180</y>
+      <width>91</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Streak: 0</string>
+    </property>
+   </widget>
    <zorder>background</zorder>
    <zorder>textInputBox</zorder>
    <zorder>morsePrinter</zorder>
@@ -525,6 +538,7 @@
    <zorder>CaptainDialogueText</zorder>
    <zorder>referenceSheetButton</zorder>
    <zorder>showAllButton</zorder>
+   <zorder>streaksLabel</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -532,7 +546,7 @@
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>24</height>
+     <height>37</height>
     </rect>
    </property>
   </widget>

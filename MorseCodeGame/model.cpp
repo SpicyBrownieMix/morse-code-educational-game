@@ -12,6 +12,7 @@ Model::Model(QObject *parent) : QObject{parent}
     onScreenLetterCounter = 0;
     morseString = "";
     message = "";
+    streak = 0;
     fillMorseAlphabetMap();
 
     QTimer::singleShot(1000, this, [this]() {sendMorse("supercalifragilistic");});
@@ -41,12 +42,16 @@ void Model::textInputEntered(QString text)
 
     if(!correct)
     {
+        streak = 0;
+        emit updateStreak(streak);
         incorrectString.erase(incorrectString.end()-2, incorrectString.end());
         emit toggleCaptain();
         emit sendCaptainText(incorrectString);
     }
     else
     {
+        streak++;
+        emit updateStreak(streak);
         emit toggleCaptain();
         emit sendCaptainText("Hooray, you got it right!");
     }
@@ -116,4 +121,10 @@ void Model::sendMorseHelper()
     }
     else
         return;
+}
+
+void Model::resetStreak()
+{
+    streak = 0;
+    emit updateStreak(streak);
 }

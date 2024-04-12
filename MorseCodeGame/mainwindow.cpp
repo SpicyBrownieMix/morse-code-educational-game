@@ -53,6 +53,9 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 
     connect(ui->referenceSheetButton, &QPushButton::clicked, this, &MainWindow::showRefrenceSheet);
     connect(ui->showAllButton, &QPushButton::clicked, this, &MainWindow::showEntireMessage);
+
+    connect(&model, &Model::updateStreak, this, &MainWindow::showCurrentStreak);
+    connect(this, &MainWindow::refrenceOpened, &model, &Model::resetStreak);
 }
 
 MainWindow::~MainWindow()
@@ -100,6 +103,7 @@ void MainWindow::showCaptainText(QString text)
 
 void MainWindow::showRefrenceSheet()
 {
+    emit refrenceOpened();
     referenceSheetDialog->setModal(true);
     referenceSheetDialog->show();
 }
@@ -108,4 +112,9 @@ void MainWindow::showEntireMessage()
 {
     showAllDialog->setModal(true);
     showAllDialog->show();
+}
+
+void MainWindow::showCurrentStreak(int streak)
+{
+    ui->streaksLabel->setText("Streak: " + QString::number(streak));
 }
