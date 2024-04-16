@@ -4,5 +4,7 @@
         <file>MorseCodeBackground.jpg</file>
         <file>MorseDotSound.mp3</file>
         <file>MorseDashSound.mp3</file>
+        <file>captainDialogBox.jpg</file>
+        <file>captainPicture.jpg</file>
     </qresource>
 </RCC>

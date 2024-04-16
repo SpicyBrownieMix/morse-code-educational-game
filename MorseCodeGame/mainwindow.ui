@@ -466,14 +466,17 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>730</x>
-      <y>670</y>
-      <width>191</width>
-      <height>31</height>
+      <x>70</x>
+      <y>580</y>
+      <width>861</width>
+      <height>161</height>
      </rect>
     </property>
     <property name="text">
-     <string>Put Captain Dialogue Here</string>
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="Assets/Assets.qrc">:/assets/captainDialogBox.jpg</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="CaptainDialogueText">
@@ -482,14 +485,67 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>740</x>
-      <y>700</y>
-      <width>171</width>
-      <height>20</height>
+      <x>100</x>
+      <y>600</y>
+      <width>651</width>
+      <height>121</height>
      </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="216">
+          <red>72</red>
+          <green>33</green>
+          <blue>19</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="216">
+          <red>72</red>
+          <green>33</green>
+          <blue>19</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="216">
+          <red>72</red>
+          <green>33</green>
+          <blue>19</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="216">
+          <red>72</red>
+          <green>33</green>
+          <blue>19</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled/>
+     </palette>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Captain Dialogue Text</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
     </property>
    </widget>
    <widget class="QPushButton" name="referenceSheetButton">
@@ -1023,18 +1079,40 @@
       <disabled/>
      </palette>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>Streak: 0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="captainPicture">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>590</y>
+      <width>141</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="Assets/Assets.qrc">:/assets/captainPicture.jpg</pixmap>
     </property>
    </widget>
    <zorder>background</zorder>
    <zorder>textInputBox</zorder>
    <zorder>morsePrinter</zorder>
-   <zorder>CaptainDialogueBox</zorder>
-   <zorder>CaptainDialogueText</zorder>
    <zorder>referenceSheetButton</zorder>
    <zorder>showAllButton</zorder>
    <zorder>streaksLabel</zorder>
+   <zorder>CaptainDialogueBox</zorder>
+   <zorder>CaptainDialogueText</zorder>
+   <zorder>captainPicture</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

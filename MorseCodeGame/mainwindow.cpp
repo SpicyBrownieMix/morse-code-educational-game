@@ -25,6 +25,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 
     ui->CaptainDialogueBox->setVisible(false);
     ui->CaptainDialogueText->setVisible(false);
+    ui->captainPicture->setVisible(false);
 
     // setup player for "dot" sound
     dotPlayer = new QMediaPlayer;
@@ -94,6 +95,7 @@ void MainWindow::toggleCaptain()
 {
     ui->CaptainDialogueBox->setVisible(!ui->CaptainDialogueBox->isVisible());
     ui->CaptainDialogueText->setVisible(!ui->CaptainDialogueText->isVisible());
+    ui->captainPicture->setVisible(!ui->captainPicture->isVisible());
 }
 
 void MainWindow::showCaptainText(QString text)

@@ -15,7 +15,7 @@ Model::Model(QObject *parent) : QObject{parent}
     streak = 0;
     fillMorseAlphabetMap();
 
-    QTimer::singleShot(1000, this, [this]() {sendMorse("supercalifragilistic");});
+    //QTimer::singleShot(1000, this, [this]() {sendMorse("supercalifragilistic");});
 }
 
 void Model::textInputEntered(QString text)
@@ -60,6 +60,7 @@ void Model::textInputEntered(QString text)
 
 void Model::fillMorseAlphabetMap()
 {
+    // open the file that translates letters into morse
     QFile file(":/assets/morseAlphabet.txt");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
         return;
@@ -75,8 +76,6 @@ void Model::fillMorseAlphabetMap()
 
 void Model::sendMorse(string word)
 {
-    message = word;
-
     for (char c : word)
     {
         morseString += MORSE_ALPHABET.at(c) + "  ";
@@ -94,11 +93,12 @@ void Model::sendMorseHelper()
         onScreenLetterCounter = 0;
     }
 
-    // if this is the end of the string, stop going.
+    // if this is the end of the string, stop writing to the screen.
     if (morseString.size() == 0)
         return;
 
     // send the first letter of the string to the view, and then remove that letter from the string.
+    // tell the view to play the appropriate sound with the dot or dash
     char c = morseString[0];
     morseString = morseString.substr(1);
     if (c == '-')
