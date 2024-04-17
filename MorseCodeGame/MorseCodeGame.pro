@@ -134,13 +134,13 @@ DISTFILES += \
     Assets/MorseDashSound.mp3 \
     Assets/MorseDotSound.mp3 \
     Assets/assesmentSentances.txt \
-    Assets/captainDialog.txt \
+    Assets/captainRandomDialog.txt \
+    Assets/captainStoryDialog.txt \
     Assets/morseAlphabet.txt \
     Box2D/Box2DConfig.cmake \
     Box2D/CMakeLists.txt \
     Morse Code Background copy.jpg \
-    level1 \
-    level2
+    level1
 
 RESOURCES += \
     Assets/Assets.qrc

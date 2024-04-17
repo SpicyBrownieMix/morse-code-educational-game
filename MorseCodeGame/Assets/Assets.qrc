@@ -6,5 +6,9 @@
         <file>MorseDashSound.mp3</file>
         <file>captainDialogBox.jpg</file>
         <file>captainPicture.jpg</file>
+        <file>captainRandomDialog.txt</file>
+        <file>captainStoryDialog.txt</file>
+        <file>levelOneWords.txt</file>
+        <file>levelTwoWords.txt</file>
     </qresource>
 </RCC>
