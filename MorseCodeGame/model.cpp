@@ -128,3 +128,4 @@ void Model::resetStreak()
     streak = 0;
     emit updateStreak(streak);
 }
+

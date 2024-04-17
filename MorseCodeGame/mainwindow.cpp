@@ -61,11 +61,22 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     connect(this, &MainWindow::refrenceOpened, &model, &Model::resetStreak);
 
     connect(&motion, &Motion::newCaptainHeight, this, &MainWindow::moveCaptain);
+
+    timeStep = 1.0f/60.0f;
+    velocityIterations = 6;
+    positionIterations = 2;
+    initializeBox2D();
+
+    QTimer* timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, &MainWindow::updateBox2D);
+    timer->start(100);
+    elapsedTime = 0.0f;
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete world;
 }
 
 void MainWindow::textEditingComplete()
@@ -133,4 +144,38 @@ void MainWindow::moveCaptain(int yPos)
         ui->captainPicture->setGeometry(QRect(ui->captainPicture->x(), ui->captainPicture->y() - yPos, 141, 141));
 
     captainMovingUp = !captainMovingUp;
+}
+
+void MainWindow::initializeBox2D()
+{
+    b2Vec2 gravity(0.0f, -10.0f);
+    world = new b2World(gravity);
+
+    b2BodyDef backgroundBodyDef;
+    backgroundBodyDef.type = b2_staticBody;
+    backgroundBodyDef.position.Set(0.0f, 0.0f);
+    backgroundBody = world->CreateBody(&backgroundBodyDef);
+
+    b2PolygonShape backgroundShape;
+    backgroundShape.SetAsBox(1000, 750);
+
+    b2FixtureDef backgrounFixtureDef;
+    backgrounFixtureDef.shape = &backgroundShape;
+    backgroundBody->CreateFixture(&backgrounFixtureDef);
+}
+
+
+void MainWindow::updateBox2D()
+{
+    world->Step(timeStep, velocityIterations, positionIterations);
+
+    elapsedTime += timeStep;
+
+    b2Vec2 backgroundPos = backgroundBody->GetPosition();
+
+    float32 amplitude = 10.0f;
+    float32 frequency = 0.5f;
+    float32 displacement = amplitude * sin(2 * b2_pi * frequency * elapsedTime);
+
+    ui->background->move(backgroundPos.x + displacement, backgroundPos.y + displacement);
 }
