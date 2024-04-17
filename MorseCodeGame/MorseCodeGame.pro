@@ -38,6 +38,7 @@ DISTFILES += \
     Assets/MorseCodeBackground.jpg \
     Assets/MorseDashSound.mp3 \
     Assets/MorseDotSound.mp3 \
+    Assets/assesmentSentances.txt \
     Assets/captainDialog.txt \
     Assets/morseAlphabet.txt \
     Morse Code Background copy.jpg \
