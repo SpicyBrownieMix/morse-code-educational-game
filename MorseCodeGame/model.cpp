@@ -30,7 +30,7 @@ void Model::textInputEntered(QString text)
         emit sendCaptainText("The message length is incorrect.");
         return;
     }
-    for (int i = 0; i < message.length(); i++)
+    for (unsigned char i = 0; i < message.length(); i++)
     {
         if(text[i] != message[i])
         {

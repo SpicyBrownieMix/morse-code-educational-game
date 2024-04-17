@@ -26,6 +26,7 @@ signals:
     void updateStreak(int streak);
 
 private:
+
     std::map<char,std::string> MORSE_ALPHABET; // maps the letters of the alphabet to morse code
     int onScreenLetterCounter; // counts the current number of morse letters on screen
     std::string morseString; // the string of morse characters representing the current word or sentance being shown to the user.

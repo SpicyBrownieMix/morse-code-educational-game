@@ -5,6 +5,7 @@
 #include <QMainWindow>
 #include <string>
 #include <QtMultimedia>
+#include "motion.h"
 #include "referencesheetdialog.h"
 #include "showalldialog.h"
 
@@ -23,6 +24,7 @@ public:
 signals:
     void submitTextInput(QString text);
     void refrenceOpened();
+    void timerTimeout();
 
 public slots:
     void textEditingComplete();
@@ -35,8 +37,10 @@ public slots:
     void showRefrenceSheet();
     void showEntireMessage();
     void showCurrentStreak(int streak);
+    void moveCaptain(int yPos);
 
 private:
+    Motion motion;
     Ui::MainWindow *ui;
     Model* model;
     QMediaPlayer *dotPlayer;
@@ -45,5 +49,7 @@ private:
     QAudioOutput *dashAudioOutput;
     ReferenceSheetDialog* referenceSheetDialog;
     ShowAllDialog* showAllDialog;
+    bool captainMovingUp;
+
 };
 #endif // MAINWINDOW_H

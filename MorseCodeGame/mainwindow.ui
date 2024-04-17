@@ -1091,7 +1091,7 @@
    <widget class="QLabel" name="captainPicture">
     <property name="geometry">
      <rect>
-      <x>780</x>
+      <x>770</x>
       <y>590</y>
       <width>141</width>
       <height>141</height>
@@ -1120,7 +1120,7 @@
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>24</height>
+     <height>37</height>
     </rect>
    </property>
   </widget>

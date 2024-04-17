@@ -5,6 +5,8 @@
 #include <QtMultimedia>
 #include "referencesheetdialog.h"
 #include "showalldialog.h"
+#include "motion.h"
+#include <Box2D/Box2D.h>
 
 using std::string;
 
@@ -57,6 +59,8 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 
     connect(&model, &Model::updateStreak, this, &MainWindow::showCurrentStreak);
     connect(this, &MainWindow::refrenceOpened, &model, &Model::resetStreak);
+
+    connect(&motion, &Motion::newCaptainHeight, this, &MainWindow::moveCaptain);
 }
 
 MainWindow::~MainWindow()
@@ -119,4 +123,14 @@ void MainWindow::showEntireMessage()
 void MainWindow::showCurrentStreak(int streak)
 {
     ui->streaksLabel->setText("Streak: " + QString::number(streak));
+}
+
+void MainWindow::moveCaptain(int yPos)
+{
+    if(captainMovingUp)
+        ui->captainPicture->setGeometry(QRect(ui->captainPicture->x(), ui->captainPicture->y() + yPos, 141, 141));
+    else
+        ui->captainPicture->setGeometry(QRect(ui->captainPicture->x(), ui->captainPicture->y() - yPos, 141, 141));
+
+    captainMovingUp = !captainMovingUp;
 }
