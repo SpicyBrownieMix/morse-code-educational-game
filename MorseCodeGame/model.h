@@ -4,6 +4,7 @@
 #include <QObject>
 #include <iostream>
 #include <QTimer>
+#include <Box2D/Box2D.h>
 
 class Model : public QObject
 {
@@ -49,8 +50,6 @@ private:
      */
     void sendMorse(std::string word);
     void sendMorseHelper();
-
-
 
 };
 

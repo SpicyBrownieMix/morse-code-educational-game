@@ -51,5 +51,16 @@ private:
     ShowAllDialog* showAllDialog;
     bool captainMovingUp;
 
+    // Box2D
+    b2World* world;
+    b2Body* backgroundBody;
+    float32 timeStep;
+    int32 velocityIterations;
+    int32 positionIterations;
+
+    void initializeBox2D();
+    void updateBox2D();
+
+    float elapsedTime;
 };
 #endif // MAINWINDOW_H
