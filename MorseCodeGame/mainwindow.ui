@@ -1105,6 +1105,9 @@
     </property>
    </widget>
    <widget class="QLabel" name="startScreenBackground">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -1157,7 +1160,7 @@
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>24</height>
+     <height>37</height>
     </rect>
    </property>
   </widget>

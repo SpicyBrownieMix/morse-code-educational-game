@@ -34,6 +34,9 @@ private:
     std::string morseString; // the string of morse characters representing the current word or sentance being shown to the user.
     std::string message;
     int streak; //Counts the user's current streak.
+    int level; //The level the user is currently on.
+    QStringList currentWords; //The words that are in the current text file;
+
     /**
      * @brief fillMorseAlphabetMap
      * reads from the morseAlphabet.txt file to fill in the MORSE_ALPHABET map
@@ -51,6 +54,18 @@ private:
      */
     void sendMorse(std::string word);
     void sendMorseHelper();
+
+    /**
+     * @brief sendNewWord
+     * Sends a new random word to be displayed on screen.
+     */
+    void sendNewWord();
+
+    /**
+     * @brief setUpTextfile
+     * Gets all the words from the current level's text file. Call every time the level is updated.
+     */
+    void setUpTextfile();
 
 };
 

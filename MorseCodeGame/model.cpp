@@ -14,13 +14,14 @@ Model::Model(QObject *parent) : QObject{parent}
     message = "";
     streak = 0;
     fillMorseAlphabetMap();
-
+    level = 1;
+    setUpTextfile();
     //QTimer::singleShot(1000, this, [this]() {sendMorse("supercalifragilistic");});
 }
 
 void Model::startNewGame()
 {
-
+    sendNewWord(); //Temporary, can remove any time just wanted to show it works.
 }
 
 void Model::textInputEntered(QString text)
@@ -33,6 +34,7 @@ void Model::textInputEntered(QString text)
         correct = false;
         emit toggleCaptain();
         emit sendCaptainText("The message length is incorrect.");
+        sendNewWord();
         return;
     }
     for (unsigned char i = 0; i < message.length(); i++)
@@ -132,5 +134,40 @@ void Model::resetStreak()
 {
     streak = 0;
     emit updateStreak(streak);
+}
+
+void Model::sendNewWord()
+{
+    //Pick a random word and display it.
+    int random = arc4random() % (currentWords.size() - 1);
+    QString word = currentWords.at(random).toLower();
+    QTimer::singleShot(1000, this, [word, this]() {sendMorse(word.toStdString());});
+}
+
+void Model::setUpTextfile()
+{
+    QString filename;
+    currentWords.clear();
+
+    //TODO: ADD THE PATHS WHEN NEW TEXT FILES ARRIVE.
+    if(level == 1)
+        filename = ":/assets/levelOneWords";
+    else if(level == 2)
+        filename = ":/assets/levelTwoWords";
+    else
+        return;
+
+    QFile file(filename);
+    QTextStream stream(&file);
+
+    if(file.open(QIODevice::ReadOnly))
+    {
+        while(!stream.atEnd())
+        {
+            QString word = stream.readLine();
+            currentWords.push_back(word);
+        }
+    }
+    file.close();
 }
 
