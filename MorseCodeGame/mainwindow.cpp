@@ -28,6 +28,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     ui->CaptainDialogueBox->setVisible(false);
     ui->CaptainDialogueText->setVisible(false);
     ui->captainPicture->setVisible(false);
+    ui->textInputBox->setVisible(false);
 
     // setup player for "dot" sound
     dotPlayer = new QMediaPlayer;
@@ -43,24 +44,34 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     dashAudioOutput->setVolume(50);
     dashPlayer->setSource(QUrl("qrc:/assets/MorseDashSound.mp3"));
 
+    // textbox
     connect(ui->textInputBox, &QLineEdit::editingFinished, this, &MainWindow::textEditingComplete);
     connect(this, &MainWindow::submitTextInput, &model, &Model::textInputEntered);
 
+    // on-screen connections
     connect(&model, &Model::playDotSound, this, &MainWindow::playDotSound);
     connect(&model, &Model::playDashSound, this, &MainWindow::playDashSound);
     connect(&model, &Model::sendMorseChar, this, &MainWindow::recieveMorseChar);
     connect(&model, &Model::clearMorseBox, this, &MainWindow::clearMorseBox);
 
+    // captain connections
     connect(&model, &Model::toggleCaptain, this, &MainWindow::toggleCaptain);
     connect(&model, &Model::sendCaptainText, this, &MainWindow::showCaptainText);
 
+    // popups
     connect(ui->referenceSheetButton, &QPushButton::clicked, this, &MainWindow::showRefrenceSheet);
     connect(ui->showAllButton, &QPushButton::clicked, this, &MainWindow::showEntireMessage);
 
+    // streak connections
     connect(&model, &Model::updateStreak, this, &MainWindow::showCurrentStreak);
     connect(this, &MainWindow::refrenceOpened, &model, &Model::resetStreak);
 
+    // box2D connections
     connect(&motion, &Motion::newCaptainHeight, this, &MainWindow::moveCaptain);
+
+    // start screen connections
+    connect(ui->newGameButton, &QAbstractButton::pressed, this, &MainWindow::startNewGame);
+    connect(ui->newGameButton, &QAbstractButton::pressed, &model, &Model::startNewGame);
 
     timeStep = 1.0f/60.0f;
     velocityIterations = 6;
@@ -77,6 +88,16 @@ MainWindow::~MainWindow()
 {
     delete ui;
     delete world;
+}
+
+void MainWindow::startNewGame()
+{
+    ui->startScreenBackground->setVisible(false);
+    ui->newGameButton->setVisible(false);
+    ui->newGameButton->setEnabled(false);
+    ui->CaptainDialogueBox->setVisible(true);
+    ui->captainPicture->setVisible(true);
+    ui->CaptainDialogueText->setVisible(true);
 }
 
 void MainWindow::textEditingComplete()

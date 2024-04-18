@@ -18,6 +18,11 @@ Model::Model(QObject *parent) : QObject{parent}
     //QTimer::singleShot(1000, this, [this]() {sendMorse("supercalifragilistic");});
 }
 
+void Model::startNewGame()
+{
+
+}
+
 void Model::textInputEntered(QString text)
 {
     bool correct = true;

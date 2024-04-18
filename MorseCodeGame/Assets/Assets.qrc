@@ -8,7 +8,8 @@
         <file>captainPicture.jpg</file>
         <file>captainRandomDialog.txt</file>
         <file>captainStoryDialog.txt</file>
-        <file>levelOneWords.txt</file>
         <file>levelTwoWords.txt</file>
+        <file>levelOneWords</file>
+        <file>startScreenBackground.png</file>
     </qresource>
 </RCC>

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1000</width>
-    <height>801</height>
+    <height>783</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -1104,6 +1104,41 @@
      <pixmap resource="Assets/Assets.qrc">:/assets/captainPicture.jpg</pixmap>
     </property>
    </widget>
+   <widget class="QLabel" name="startScreenBackground">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1000</width>
+      <height>750</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="Assets/Assets.qrc">:/assets/startScreenBackground.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="newGameButton">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>280</y>
+      <width>421</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bauhaus 93</family>
+      <pointsize>45</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Start New Game</string>
+    </property>
+   </widget>
    <zorder>background</zorder>
    <zorder>textInputBox</zorder>
    <zorder>morsePrinter</zorder>
@@ -1113,6 +1148,8 @@
    <zorder>CaptainDialogueBox</zorder>
    <zorder>CaptainDialogueText</zorder>
    <zorder>captainPicture</zorder>
+   <zorder>startScreenBackground</zorder>
+   <zorder>newGameButton</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -1120,7 +1157,7 @@
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>37</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>

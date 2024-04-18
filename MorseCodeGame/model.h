@@ -16,6 +16,7 @@ public:
 public slots:
     void textInputEntered(QString text);
     void resetStreak();
+    void startNewGame();
 
 signals:
     void sendMorseChar(std::string s);

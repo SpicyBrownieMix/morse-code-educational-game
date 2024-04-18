@@ -38,6 +38,7 @@ public slots:
     void showEntireMessage();
     void showCurrentStreak(int streak);
     void moveCaptain(int yPos);
+    void startNewGame();
 
 private:
     Motion motion;
