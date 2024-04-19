@@ -30,6 +30,9 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     ui->captainPicture->setVisible(false);
     ui->textInputBox->setVisible(false);
 
+    //button look, make transparent
+    ui->referenceSheetButton->setStyleSheet("background-color: rgba(255, 255, 255, 0); border: none;");
+
     // setup player for "dot" sound
     dotPlayer = new QMediaPlayer;
     dotAudioOutput = new QAudioOutput;
