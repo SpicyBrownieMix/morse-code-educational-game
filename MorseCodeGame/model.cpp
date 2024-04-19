@@ -4,7 +4,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QTimer>
-
+#include <list>
 
 using namespace std;
 
@@ -15,14 +15,17 @@ Model::Model(QObject *parent) : QObject{parent}
     message = "";
     streak = 0;
     fillMorseAlphabetMap();
+    fillCaptainDialogList();
     level = 1;
     setUpTextfile();
-    //QTimer::singleShot(1000, this, [this]() {sendMorse("supercalifragilistic");});
 }
 
 void Model::startNewGame()
 {
-    sendNewWord(); //Temporary, can remove any time just wanted to show it works.
+    // start captain's dialog
+    emit toggleCaptain();
+    emit sendCaptainText("The message length is incorrect.");
+    pickRandomWord();
 }
 
 void Model::textInputEntered(QString text)
@@ -35,7 +38,7 @@ void Model::textInputEntered(QString text)
         correct = false;
         emit toggleCaptain();
         emit sendCaptainText("The message length is incorrect.");
-        sendNewWord();
+        pickRandomWord();
         return;
     }
     for (unsigned char i = 0; i < message.length(); i++)
@@ -80,6 +83,59 @@ void Model::fillMorseAlphabetMap()
         string line = in.readLine().toStdString();
         MORSE_ALPHABET.insert(pair<char,string>(line[0], line.substr(2)));
     }
+}
+
+void Model::fillCaptainDialogList()
+{
+    // open the file that translates letters into morse
+    QFile file(":/assets/captainStoryDialog.txt");
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        return;
+
+    // add all the dialog lines in this block to a list.
+    // if we get to a clear space, add the list to captain dialog and clear list.
+    QTextStream in(&file);
+    list<string> list;
+    while (!in.atEnd())
+    {
+        string line = in.readLine().toStdString();
+        if (line.empty())
+        {
+            captainDialog.push_back(list);
+            list.clear();
+            continue;
+        }
+        list.push_back(line);
+    }
+
+    captainDialogIt = captainDialog.begin();
+}
+
+void Model::setUpTextfile()
+{
+    QString filename;
+    currentWords.clear();
+
+    //TODO: ADD THE PATHS WHEN NEW TEXT FILES ARRIVE.
+    if(level == 1)
+        filename = ":/assets/levelOneWords";
+    else if(level == 2)
+        filename = ":/assets/levelTwoWords";
+    else
+        return;
+
+    QFile file(filename);
+    QTextStream stream(&file);
+
+    if(file.open(QIODevice::ReadOnly))
+    {
+        while(!stream.atEnd())
+        {
+            QString word = stream.readLine();
+            currentWords.push_back(word);
+        }
+    }
+    file.close();
 }
 
 void Model::sendMorse(string word)
@@ -139,38 +195,11 @@ void Model::resetStreak()
     emit updateStreak(streak);
 }
 
-void Model::sendNewWord()
+void Model::pickRandomWord()
 {
     //Pick a random word and display it.
     int random = arc4random() % (currentWords.size() - 1);
     QString word = currentWords.at(random).toLower();
     QTimer::singleShot(1000, this, [word, this]() {sendMorse(word.toStdString());});
-}
-
-void Model::setUpTextfile()
-{
-    QString filename;
-    currentWords.clear();
-
-    //TODO: ADD THE PATHS WHEN NEW TEXT FILES ARRIVE.
-    if(level == 1)
-        filename = ":/assets/levelOneWords";
-    else if(level == 2)
-        filename = ":/assets/levelTwoWords";
-    else
-        return;
-
-    QFile file(filename);
-    QTextStream stream(&file);
-
-    if(file.open(QIODevice::ReadOnly))
-    {
-        while(!stream.atEnd())
-        {
-            QString word = stream.readLine();
-            currentWords.push_back(word);
-        }
-    }
-    file.close();
 }
 

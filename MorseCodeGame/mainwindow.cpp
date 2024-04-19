@@ -104,6 +104,7 @@ void MainWindow::startNewGame()
     ui->CaptainDialogueBox->setVisible(true);
     ui->captainPicture->setVisible(true);
     ui->CaptainDialogueText->setVisible(true);
+    ui->textInputBox->setVisible(true);
 }
 
 void MainWindow::textEditingComplete()

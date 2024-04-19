@@ -1,26 +1,11 @@
-Ahoy there! I hear you're the new Communications Officer for our little operation here!
-/nThe last one didn't last too long, kept getting his dots and dashes mixed up. Strange Fellow...
-
-Anyways, welcome aboard the USS Blackfin! We're excited to have you onboard rookie. You're going
-/nto be responsible for decoding covert messages from our fellow submarines. We need to stay in
-/ncommunication, you know!
-
+Ahoy there! I hear you're the new Communications Officer for our little operation here!/nThe last one didn't last too long, kept getting his dots and dashes mixed up. Strange Fellow...
+Anyways, welcome aboard the USS Blackfin! We're excited to have you onboard rookie. You're going/nto be responsible for decoding covert messages from our fellow submarines. We need to stay in/ncommunication, you know!
 I presume you know morse code already?
-
 What!? You don't?? How did you get this job??
-
-Well, nevermind that, we've launched already... Here, let me show you the basics and that should
-/nbe enough for now.
-
-Let me show you the setup first. The screen above me here is where all incoming messages will appear
-/nin morse code. They will both type on screen and make noise at the same time. The box below that is
-/nwhere you will type incoming messages... in english, of course.
-
-All incoming messages will be sent directly to me. Don't worry if they're nonsense, that's just navy
-talk. I'll know what it means.
-
-Anyways, let's teach you the basic letters you need to know. I'll send you a message on screen to
-demonstrate what the letters look and sound like.
+Well, nevermind that, we've launched already... Here, let me show you the basics and that should/nbe enough for now.
+Let me show you the setup first. The screen above me here is where all incoming messages will appear/nin morse code. They will both type on screen and make noise at the same time. The box below that is/nwhere you will type incoming messages... in english, of course.
+All incoming messages will be sent directly to me. Don't worry if they're nonsense, that's just navy/ntalk. I'll know what it means.
+Anyways, let's teach you the basic letters you need to know. I'll send you a message on screen to/ndemonstrate what the letters look and sound like.
 
 This is A,
 
@@ -30,8 +15,7 @@ Now, I'm going to send you one of the two. Can you tell me which one this is?
 
 Great job! And what is this one?
 
-You're better than the last guy already, rookie! Maybe I won't have to worry after all. Let's try
-/na few more.
+You're better than the last guy already, rookie! Maybe I won't have to worry after all. Let's try/na few more.
 
 This is I.
 
@@ -53,38 +37,20 @@ Awesome, and this one?
 
 That's it!
 
-Before you start translating messages, let me tell you about the pauses. In morse code, a "dot" is
-/none unit of time, and a "dash" is three units. Between letters in a word, there will be a pause that
-/nis one dot worth of time, but between words in a sentance there will be a dash worth of time.
-
-Now that you've gotten that down, you're ready to start translating messgaes for the ship. The screen
-/nabove me will only show 3 letters at a time -- if a word is longer than three letters, it will
-/nshow the first three, then start typing the next three.
-
-Try to keep up, but don't worry too much if you get lost. You can press the "See whole message" button
-after it's done typing to see everything so far.
-
+Before you start translating messages, let me tell you about the pauses. In morse code, a "dot" is/none unit of time, and a "dash" is three units. Between letters in a word, there will be a pause that/nis one dot worth of time, but between words in a sentance there will be a dash worth of time.
+Now that you've gotten that down, you're ready to start translating messgaes for the ship. The screen/nabove me will only show 3 letters at a time -- if a word is longer than three letters, it will/nshow the first three, then start typing the next three.
+Try to keep up, but don't worry too much if you get lost. You can press the "See whole message" button/nafter it's done typing to see everything so far.
 And if you ever forget a letter, you can use the reference sheet on my left to refresh your memorry!
-
 Good luck!
 
-Alright rookie, I see that you've been getting these messages right pretty consistently. The "streak" in
-/nthe corner of the screen there shows you how many messages in a row you've gotten right without looking
-/nat the reference sheet.
-
+Alright rookie, I see that you've been getting these messages right pretty consistently. The "streak" in/nthe corner of the screen there shows you how many messages in a row you've gotten right without looking/nat the reference sheet.
 If you get 5 in a row right, you might just be ready to intoduce some new letters into your vocabulary!
-
 Let me know when you get there!
 
-You've gotten 5 in a row right already! Wow, that's mighty impressive. Well, it looks like we have a
-/nslightly more complex message incoming from headquarters.... if you can translate this correctly,
-/nI'll show you some new letter.
-
+You've gotten 5 in a row right already! Wow, that's mighty impressive. Well, it looks like we have a/nslightly more complex message incoming from headquarters.... if you can translate this correctly,/nI'll show you some new letter.
 Keep in mind, a longer pause that is equivalent to the length of a dash means a space between words.
 
-Great Job rookie! We'd better change our course and make sure we're in the right terrian. Good to know
-/nyou're looking out for us. I'll get on those course corrections asap.
-
+Great Job rookie! We'd better change our course and make sure we're in the right terrian. Good to know/nyou're looking out for us. I'll get on those course corrections asap.
 But first, let's learn some new letters!
 
 To start, this is O.
@@ -105,15 +71,10 @@ Alright, which one is this?
 
 Perfect! And this?
 
-You're a natural. That's all for now, but keep up the good work and you'll have a full vocabulary soon.
-/nremember, if you get 5 right without looking at the reference sheet, let me know and I'll teach you
-/nsome new letters!
+You're a natural. That's all for now, but keep up the good work and you'll have a full vocabulary soon./nremember, if you get 5 right without looking at the reference sheet, let me know and I'll teach you/nsome new letters!
 
 Wow, 5 more correct already? You're going to be up to speed in no time!
-
-Hmm... looks like we're getting another secret message from headquarters... If you can translate this,
-/nyou'll be ready to learn a few more letters.
-
+Hmm... looks like we're getting another secret message from headquarters... If you can translate this,/nyou'll be ready to learn a few more letters.
 Huh, just a weather update I guess.... well, nontheless, great job to you! Let's learn a few more, shall we?
 
 This is D.
@@ -121,6 +82,7 @@ This is D.
 And this is Y.
 
 Ok, now let's give you a little test. What's this?
+
 Outstanding job rookie. What about this one?
 
 Great! Let's learn two more.
@@ -133,13 +95,10 @@ Ok, just a little test and then you'll be back in the driver's seat. What's this
 
 Amazing! And this?
 
-You continue to impress. Well, I'll let you get back too it. If I see you keep up this great work, we'll add
-/nsome more letters to your vocablary.
+You continue to impress. Well, I'll let you get back too it. If I see you keep up this great work, we'll add/nsome more letters to your vocablary.
 
 Wow, so many correct already? You might just be suited for this job.
-
-Hmm... looks like we're getting another secret message from headquarters... If you can translate this,
-/nyou'll be ready to learn a few more letters.
+Hmm... looks like we're getting another secret message from headquarters... If you can translate this,/nyou'll be ready to learn a few more letters.
 
 Wow! Alright then, let's learn a few more, shall we?
 
@@ -161,13 +120,10 @@ Ok, now what's this?
 
 Amazing! And this?
 
-You continue to impress. Well, I'll let you get back too it. If I see you keep up this great work, we'll add
-/nsome more letters to your vocablary.
+You continue to impress. Well, I'll let you get back too it. If I see you keep up this great work, we'll add/nsome more letters to your vocablary.
 
 You're outstanding rookie! You keep soaking up these letters like nobody's business.
-
-Hmm... looks like we're getting another secret message from headquarters... If you can translate this,
-/nyou'll be ready to learn a few more letters.
+Hmm... looks like we're getting another secret message from headquarters... If you can translate this,/nyou'll be ready to learn a few more letters.
 
 Wow! Alright then, let's learn a few more, shall we?
 
@@ -189,14 +145,10 @@ Ok, now which one is this?
 
 Amazing! And this?
 
-You continue to impress. Well, I'll let you get back too it. If I see you keep up this great work, we'll add
-/nsome more letters to your vocablary.
+You continue to impress. Well, I'll let you get back too it. If I see you keep up this great work, we'll add/nsome more letters to your vocablary.
 
-By golly, you've almost learned the whole alphabet by now! We only have 4 more letters to go, and then you'll
-/nbe a master!
-
-Hmm... looks like we're getting another secret message from headquarters... If you can translate this,
-/nyou'll be ready to learn a few more letters.
+By golly, you've almost learned the whole alphabet by now! We only have 4 more letters to go, and then you'll/nbe a master!
+Hmm... looks like we're getting another secret message from headquarters... If you can translate this,/nyou'll be ready to learn a few more letters.
 
 Wow! Alright then, let's finish this up, shall we?
 
@@ -218,29 +170,15 @@ Ok, now which one is this?
 
 Amazing! And this?
 
-Wow!! And that's it, then end of the Alphabet! If you really get the hang of these last few letters,
-/nwe'll be able to promote you to our year-round communications officer! Trust me, that comes with
-/na nice pay raise.
+Wow!! And that's it, then end of the Alphabet! If you really get the hang of these last few letters,/nwe'll be able to promote you to our year-round communications officer! Trust me, that comes with/na nice pay raise.
+You just keep up the great work and keep practicing. Let me know when you feel like you're ready/nfor me to check your progress.
 
-You just keep up the great work and keep practicing. Let me know when you feel like you're ready
-for me to check your progress.
-
-Man rookie, the last guy who did this could never be as good as you are now. I'm impressed. No one
-has ever learned this fast.
-
-Well, we've got a message of the utmost importance from headquarters... It looks a litte complex, but
-I feel like I can entrust it to you. Do you feel ready rookie?
-
+Man rookie, the last guy who did this could never be as good as you are now. I'm impressed. No one/nhas ever learned this fast.
+Well, we've got a message of the utmost importance from headquarters... It looks a litte complex, but/nI feel like I can entrust it to you. Do you feel ready rookie?
 Doesn't matter!! No one ever feels ready. Anyways, let's do it! I believe in you.
 
-Wow, you really just saved us! IF we hadn't known, we'd have run right into enemy territory!
-
-Well, I can offically say, you're our best comminucations officer ever. The USS Blackfin is lucky
-/nto have you. I'm almost a bit sad to not be teaching you anymore...
-
-Well, anyways, I'll be around. If you'd like to stay with us and keep translating messages, feel free
-/nto do so, or come back at any time. But, if you have bigger things to get to now that you're a morse
-/ncode master, I understand. Just don't forget me!
-
+Wow, you really just saved us! If we hadn't known, we'd have run right into enemy territory!
+Well, I can offically say, you're our best comminucations officer ever. The USS Blackfin is lucky/nto have you. I'm almost a bit sad to not be teaching you anymore...
+Well, anyways, I'll be around. If you'd like to stay with us and keep translating messages, feel free/nto do so, or come back at any time. But, if you have bigger things to get to now that you're a morse/ncode master, I understand. Just don't forget me!
 Good luck in your endeavors!
 
