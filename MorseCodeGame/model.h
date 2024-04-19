@@ -26,6 +26,7 @@ signals:
     void toggleCaptain();
     void sendCaptainText(QString text);
     void updateStreak(int streak);
+    void sendFullMessage(std::string text);
 
 private:
 

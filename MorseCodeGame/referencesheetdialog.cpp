@@ -12,3 +12,4 @@ ReferenceSheetDialog::~ReferenceSheetDialog()
 {
     delete ui;
 }
+

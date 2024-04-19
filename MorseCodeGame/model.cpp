@@ -5,6 +5,7 @@
 #include <QTextStream>
 #include <QTimer>
 
+
 using namespace std;
 
 Model::Model(QObject *parent) : QObject{parent}
@@ -89,6 +90,8 @@ void Model::sendMorse(string word)
     }
 
     QTimer::singleShot(100, this, &Model::sendMorseHelper);
+    emit sendFullMessage(morseString);
+
 }
 
 void Model::sendMorseHelper()

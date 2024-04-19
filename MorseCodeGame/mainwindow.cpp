@@ -76,6 +76,9 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     connect(ui->newGameButton, &QAbstractButton::pressed, this, &MainWindow::startNewGame);
     connect(ui->newGameButton, &QAbstractButton::pressed, &model, &Model::startNewGame);
 
+    //send entire message
+    connect(&model, &Model::sendFullMessage, this, &MainWindow::receiveFullMessage);
+
     timeStep = 1.0f/60.0f;
     velocityIterations = 6;
     positionIterations = 2;
@@ -202,4 +205,9 @@ void MainWindow::updateBox2D()
     float32 displacement = amplitude * sin(2 * b2_pi * frequency * elapsedTime);
 
     ui->background->move(backgroundPos.x + displacement, backgroundPos.y + displacement);
+}
+
+void MainWindow::receiveFullMessage(string s)
+{
+    showAllDialog->setText(s);
 }

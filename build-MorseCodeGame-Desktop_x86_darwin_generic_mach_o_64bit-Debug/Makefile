@@ -384,6 +384,7 @@ DIST          = ../../Morse \
 		../../../Qt/6.6.3/macos/mkspecs/features/qt_config.prf \
 		../../../Qt/6.6.3/macos/mkspecs/macx-clang/qmake.conf \
 		../../../Qt/6.6.3/macos/mkspecs/features/spec_post.prf \
+		../MorseCodeGame/.qmake.stash \
 		../../../Qt/6.6.3/macos/mkspecs/features/exclusive_builds.prf \
 		../../../Qt/6.6.3/macos/mkspecs/features/mac/sdk.prf \
 		../../../Qt/6.6.3/macos/mkspecs/features/toolchain.prf \
@@ -524,7 +525,7 @@ TARGET        = MorseCodeGame.app/Contents/MacOS/MorseCodeGame
 EXPORT_QMAKE_MAC_SDK = macosx
 EXPORT_QMAKE_MAC_SDK_VERSION = 12.1
 EXPORT_QMAKE_XCODE_DEVELOPER_PATH = /Applications/Xcode.app/Contents/Developer
-EXPORT__QMAKE_STASH_ = 
+EXPORT__QMAKE_STASH_ = /Users/spencer/Projects/cs3505-assignment9-z/build-MorseCodeGame-Desktop_x86_darwin_generic_mach_o_64bit-Debug/.qmake.stash
 EXPORT_VALID_ARCHS = x86_64 arm64
 EXPORT_DEFAULT_ARCHS = x86_64
 EXPORT_ARCHS = $(filter $(EXPORT_VALID_ARCHS), $(if $(ARCHS), $(ARCHS), $(if $(EXPORT_DEFAULT_ARCHS), $(EXPORT_DEFAULT_ARCHS), $(EXPORT_VALID_ARCHS))))
@@ -735,6 +736,7 @@ Makefile: ../MorseCodeGame/MorseCodeGame.pro ../../../Qt/6.6.3/macos/mkspecs/mac
 		../../../Qt/6.6.3/macos/mkspecs/features/qt_config.prf \
 		../../../Qt/6.6.3/macos/mkspecs/macx-clang/qmake.conf \
 		../../../Qt/6.6.3/macos/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../Qt/6.6.3/macos/mkspecs/features/exclusive_builds.prf \
 		../../../Qt/6.6.3/macos/mkspecs/features/mac/sdk.prf \
 		../../../Qt/6.6.3/macos/mkspecs/features/toolchain.prf \
@@ -967,6 +969,7 @@ Makefile: ../MorseCodeGame/MorseCodeGame.pro ../../../Qt/6.6.3/macos/mkspecs/mac
 ../../../Qt/6.6.3/macos/mkspecs/features/qt_config.prf:
 ../../../Qt/6.6.3/macos/mkspecs/macx-clang/qmake.conf:
 ../../../Qt/6.6.3/macos/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../Qt/6.6.3/macos/mkspecs/features/exclusive_builds.prf:
 ../../../Qt/6.6.3/macos/mkspecs/features/mac/sdk.prf:
 ../../../Qt/6.6.3/macos/mkspecs/features/toolchain.prf:
@@ -1040,6 +1043,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r MorseCodeGame.app
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -2048,7 +2052,9 @@ model.o: ../MorseCodeGame/model.cpp ../MorseCodeGame/model.h \
 		../../../Qt/6.6.3/macos/lib/QtCore.framework/Headers/QFile \
 		../../../Qt/6.6.3/macos/lib/QtCore.framework/Headers/qfile.h \
 		../../../Qt/6.6.3/macos/lib/QtCore.framework/Headers/QTextStream \
-		../../../Qt/6.6.3/macos/lib/QtCore.framework/Headers/qtextstream.h
+		../../../Qt/6.6.3/macos/lib/QtCore.framework/Headers/qtextstream.h \
+		../../../Qt/6.6.3/macos/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/6.6.3/macos/lib/QtCore.framework/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o model.o ../MorseCodeGame/model.cpp
 
 motion.o: ../MorseCodeGame/motion.cpp ../MorseCodeGame/motion.h \

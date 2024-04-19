@@ -39,6 +39,7 @@ public slots:
     void showCurrentStreak(int streak);
     void moveCaptain(int yPos);
     void startNewGame();
+    void receiveFullMessage(std::string s);
 
 private:
     Motion motion;
