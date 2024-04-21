@@ -140,7 +140,12 @@ DISTFILES += \
     Box2D/Box2DConfig.cmake \
     Box2D/CMakeLists.txt \
     Morse Code Background copy.jpg \
-    levelOneWords
+    levelFiveWords \
+    levelFourWords \
+    levelOneWords \
+    levelSixWords \
+    levelThreeWords \
+    levelTwoWords
 
 RESOURCES += \
     Assets/Assets.qrc
