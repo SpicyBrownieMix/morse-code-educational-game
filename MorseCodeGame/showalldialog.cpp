@@ -5,6 +5,7 @@
 #include <QVBoxLayout>
 #include <QString>
 #include <QFont>
+#include <QDebug>
 
 ShowAllDialog::ShowAllDialog(QWidget *parent)
     : QDialog(parent)
@@ -27,5 +28,13 @@ ShowAllDialog::~ShowAllDialog()
 
 void ShowAllDialog::setText(std::string s)
 {
-    label->setText(QString::fromStdString(s));
+    QString message = "";
+    for(char c : s)
+    {
+        if (c == '.')
+            message += "•";
+        else
+            message += c;
+    }
+    label->setText(message);
 }
