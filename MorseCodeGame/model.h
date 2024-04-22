@@ -20,6 +20,8 @@ public slots:
     void resetStreak();
     void startNewGame();
     void assessmentStarted();
+    void captainFinishedTalking();
+
 
 signals:
     void sendMorseChar(std::string s);
@@ -43,6 +45,7 @@ private:
     std::map<char,std::string> MORSE_ALPHABET; // maps the letters of the alphabet to morse code
     std::list<std::list<std::string>> captainDialog; // store the captain's dialog. A list which contains's chunks of dialog, broken into lists of readable parts
     std::list<std::list<std::string>>::iterator captainDialogIt; // iterator over captain's dialog
+    std::list<std::string>::iterator captainTalking; // indicates that the captain has another dialog line after the current one.
     QStringList currentWords; //The words that are in the current text file;
     int onScreenLetterCounter; // counts the current number of morse letters on screen
     std::string morseString; // the string of morse characters representing the current word or sentance being shown to the user.
@@ -82,9 +85,14 @@ private:
 
     /**
      * @brief fillCaptainDialogList
+     * fill the captain dialog list (captainDialog) with lines from the captain dialog text file (captianStoryDialog.txt)
      */
     void fillCaptainDialogList();
 
+    /**
+     * @brief practiceLetter
+     */
+    //void practiceLetter();
 };
 
 #endif // MODEL_H

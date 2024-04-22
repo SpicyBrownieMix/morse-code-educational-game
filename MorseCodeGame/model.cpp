@@ -23,9 +23,22 @@ Model::Model(QObject *parent) : QObject{parent}
 void Model::startNewGame()
 {
     // start captain's dialog
-    emit toggleCaptain();
-    emit sendCaptainText("The message length is incorrect.");
-    pickRandomWord();
+    emit sendCaptainText(QString::fromStdString(*captainTalking));
+    advance(captainTalking,1);
+}
+
+void Model::captainFinishedTalking()
+{
+    if (captainTalking != (*captainDialogIt).end())
+    {
+        emit sendCaptainText(QString::fromStdString(*captainTalking));
+        advance(captainTalking,1);
+    }
+    else
+    {
+        advance(captainDialogIt,1);
+        captainTalking = (*captainDialogIt).begin();
+    }
 }
 
 void Model::textInputEntered(QString text)
@@ -115,6 +128,7 @@ void Model::fillCaptainDialogList()
     }
 
     captainDialogIt = captainDialog.begin();
+    captainTalking = captainDialog.front().begin();
 }
 
 void Model::setUpTextfile()

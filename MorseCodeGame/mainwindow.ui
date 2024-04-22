@@ -547,6 +547,9 @@
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
     </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QPushButton" name="referenceSheetButton">
     <property name="geometry">
@@ -1116,6 +1119,11 @@
       <height>750</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <kerning>true</kerning>
+     </font>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -1167,9 +1175,9 @@
    <zorder>CaptainDialogueBox</zorder>
    <zorder>CaptainDialogueText</zorder>
    <zorder>captainPicture</zorder>
+   <zorder>assessmentButton</zorder>
    <zorder>startScreenBackground</zorder>
    <zorder>newGameButton</zorder>
-   <zorder>assessmentButton</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -1177,7 +1185,7 @@
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>37</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>

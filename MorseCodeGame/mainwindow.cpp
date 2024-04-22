@@ -87,6 +87,8 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     //assessment connection
     connect(ui->assessmentButton, &QPushButton::clicked, &model, &Model::assessmentStarted);
 
+    connect(this, &MainWindow::captainFinishedTalking, &model, &Model::captainFinishedTalking);
+
     timeStep = 1.0f/60.0f;
     velocityIterations = 6;
     positionIterations = 2;
@@ -151,7 +153,27 @@ void MainWindow::toggleCaptain()
 
 void MainWindow::showCaptainText(QString text)
 {
-    ui->CaptainDialogueText->setText(text);
+    toBeTyped = text;
+    typeCaptainText();
+}
+
+void MainWindow::typeCaptainText()
+{
+    // if this is the end of the string, stop writing to the screen.
+    if (toBeTyped.size() == 0)
+    {
+        toBeTyped = "";
+        typingText = "";
+        QTimer::singleShot(500, this, [this] {ui->CaptainDialogueText->setText("");});
+        QTimer::singleShot(500, this, [this] {emit captainFinishedTalking();});
+        return;
+    }
+
+    QChar c = toBeTyped.front();
+    toBeTyped = toBeTyped.mid(1);
+    typingText.append(c);
+    ui->CaptainDialogueText->setText(typingText);
+    QTimer::singleShot(50, this, &MainWindow::typeCaptainText);
 }
 
 void MainWindow::showRefrenceSheet()

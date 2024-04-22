@@ -5,6 +5,7 @@
 #include <QMainWindow>
 #include <string>
 #include <QtMultimedia>
+#include <QString>
 #include "motion.h"
 #include "referencesheetdialog.h"
 #include "showalldialog.h"
@@ -25,6 +26,7 @@ signals:
     void submitTextInput(QString text);
     void refrenceOpened();
     void timerTimeout();
+    void captainFinishedTalking();
 
 public slots:
     void textEditingComplete();
@@ -59,6 +61,8 @@ private:
     ReferenceSheetDialog* referenceSheetDialog;
     ShowAllDialog* showAllDialog;
     bool captainMovingUp;
+    QString typingText;
+    QString toBeTyped;
 
     // Box2D
     b2World* world;
@@ -75,6 +79,8 @@ private:
      * Hides and disables the assessment button.
      */
     void hideAssessment();
+
+    void typeCaptainText();
 
     float elapsedTime;
 };
