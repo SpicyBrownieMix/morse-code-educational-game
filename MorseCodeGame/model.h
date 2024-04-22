@@ -19,6 +19,7 @@ public slots:
     void textInputEntered(QString text);
     void resetStreak();
     void startNewGame();
+    void assessmentStarted();
 
 signals:
     void sendMorseChar(std::string s);
@@ -29,6 +30,13 @@ signals:
     void sendCaptainText(QString text);
     void updateStreak(int streak);
     void sendFullMessage(std::string text);
+    void clearText();
+
+    /**
+     * @brief streakHighEnough
+     * The streak is high enough to continue to the assesment if desired.
+     */
+    void streakHighEnough();
 
 private:
 

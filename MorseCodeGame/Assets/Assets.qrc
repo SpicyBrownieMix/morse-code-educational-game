@@ -11,5 +11,9 @@
         <file>levelTwoWords.txt</file>
         <file>levelOneWords</file>
         <file>startScreenBackground.png</file>
+        <file>levelThreeWords</file>
+        <file>levelFiveWords</file>
+        <file>levelFourWords</file>
+        <file>levelSixWords</file>
     </qresource>
 </RCC>

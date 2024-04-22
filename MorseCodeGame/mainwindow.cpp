@@ -25,10 +25,13 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     referenceSheetDialog = new ReferenceSheetDialog(this);
     showAllDialog = new ShowAllDialog(this);
 
+    //Set initial visibilites
     ui->CaptainDialogueBox->setVisible(false);
     ui->CaptainDialogueText->setVisible(false);
     ui->captainPicture->setVisible(false);
     ui->textInputBox->setVisible(false);
+    ui->assessmentButton->setVisible(false);
+    ui->assessmentButton->setEnabled(false);
 
     //button look, make transparent
     ui->referenceSheetButton->setStyleSheet("background-color: rgba(255, 255, 255, 0); border: none;");
@@ -48,8 +51,9 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     dashPlayer->setSource(QUrl("qrc:/assets/MorseDashSound.mp3"));
 
     // textbox
-    connect(ui->textInputBox, &QLineEdit::editingFinished, this, &MainWindow::textEditingComplete);
+    connect(ui->textInputBox, &QLineEdit::returnPressed, this, &MainWindow::textEditingComplete);
     connect(this, &MainWindow::submitTextInput, &model, &Model::textInputEntered);
+    connect(&model, &Model::clearText, this, &MainWindow::clearInputBox);
 
     // on-screen connections
     connect(&model, &Model::playDotSound, this, &MainWindow::playDotSound);
@@ -68,6 +72,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     // streak connections
     connect(&model, &Model::updateStreak, this, &MainWindow::showCurrentStreak);
     connect(this, &MainWindow::refrenceOpened, &model, &Model::resetStreak);
+    connect(&model, &Model::streakHighEnough, this, &MainWindow::showAssessment);
 
     // box2D connections
     connect(&motion, &Motion::newCaptainHeight, this, &MainWindow::moveCaptain);
@@ -78,6 +83,9 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 
     //send entire message
     connect(&model, &Model::sendFullMessage, this, &MainWindow::receiveFullMessage);
+
+    //assessment connection
+    connect(ui->assessmentButton, &QPushButton::clicked, &model, &Model::assessmentStarted);
 
     timeStep = 1.0f/60.0f;
     velocityIterations = 6;
@@ -161,6 +169,8 @@ void MainWindow::showEntireMessage()
 
 void MainWindow::showCurrentStreak(int streak)
 {
+    if(streak == 0)
+        hideAssessment();
     ui->streaksLabel->setText("Streak: " + QString::number(streak));
 }
 
@@ -211,4 +221,21 @@ void MainWindow::updateBox2D()
 void MainWindow::receiveFullMessage(string s)
 {
     showAllDialog->setText(s);
+}
+
+void MainWindow::showAssessment()
+{
+    ui->assessmentButton->setVisible(true);
+    ui->assessmentButton->setEnabled(true);
+}
+
+void MainWindow::hideAssessment()
+{
+    ui->assessmentButton->setVisible(false);
+    ui->assessmentButton->setEnabled(false);
+}
+
+void MainWindow::clearInputBox()
+{
+    ui->textInputBox->clear();
 }

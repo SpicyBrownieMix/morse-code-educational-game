@@ -40,6 +40,13 @@ public slots:
     void moveCaptain(int yPos);
     void startNewGame();
     void receiveFullMessage(std::string s);
+    void clearInputBox();
+
+    /**
+     * @brief showAssessment
+     * Shows and enables the assesment button.
+     */
+    void showAssessment();
 
 private:
     Motion motion;
@@ -62,6 +69,12 @@ private:
 
     void initializeBox2D();
     void updateBox2D();
+
+    /**
+     * @brief hideAssessment
+     * Hides and disables the assessment button.
+     */
+    void hideAssessment();
 
     float elapsedTime;
 };

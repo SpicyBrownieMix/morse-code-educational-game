@@ -37,8 +37,9 @@ void Model::textInputEntered(QString text)
     {
         correct = false;
         emit toggleCaptain();
-        emit sendCaptainText("The message length is incorrect.");
-        pickRandomWord();
+        emit sendCaptainText("The message length is incorrect. Please try again.");
+        resetStreak();
+        //pickRandomWord();
         return;
     }
     for (unsigned char i = 0; i < message.length(); i++)
@@ -53,18 +54,23 @@ void Model::textInputEntered(QString text)
 
     if(!correct)
     {
-        streak = 0;
-        emit updateStreak(streak);
+        resetStreak();
         incorrectString.erase(incorrectString.end()-2, incorrectString.end());
         emit toggleCaptain();
         emit sendCaptainText(incorrectString);
     }
     else
     {
+        emit clearText();
         streak++;
         emit updateStreak(streak);
+        if(streak >= 5)
+        {
+            emit streakHighEnough();
+        }
         emit toggleCaptain();
         emit sendCaptainText("Hooray, you got it right!");
+        pickRandomWord();
     }
 
 }
@@ -116,11 +122,18 @@ void Model::setUpTextfile()
     QString filename;
     currentWords.clear();
 
-    //TODO: ADD THE PATHS WHEN NEW TEXT FILES ARRIVE.
-    if(level == 1)
+    if (level == 1)
         filename = ":/assets/levelOneWords";
-    else if(level == 2)
+    else if (level == 2)
         filename = ":/assets/levelTwoWords";
+    else if (level == 3)
+        filename = ":/assets/levelThreeWords";
+    else if (level == 4)
+        filename = ":/assets/levelFourWords";
+    else if (level == 5)
+        filename = ":/assets/levelFiveWords";
+    else if (level == 6)
+        filename = ":/assets/levelSixWords";
     else
         return;
 
@@ -200,6 +213,12 @@ void Model::pickRandomWord()
     //Pick a random word and display it.
     int random = arc4random() % (currentWords.size() - 1);
     QString word = currentWords.at(random).toLower();
-    QTimer::singleShot(1000, this, [word, this]() {sendMorse(word.toStdString());});
+    message = word.toStdString();
+    QTimer::singleShot(1000, this, [word, this]() {sendMorse(message);});
+}
+
+void Model::assessmentStarted()
+{
+    //TODO: SEND THE ASSESMENT FOR THIS LEVEL
 }
 
