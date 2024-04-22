@@ -289,7 +289,7 @@ void Model::assessmentStarted()
 void Model::practiceLetter()
 {
     string letter(1, *letterLevelsIt);
-    if (letter == '/')
+    if (letter == "/")
     {
         practicingLetter = false;
         return;

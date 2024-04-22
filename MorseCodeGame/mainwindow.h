@@ -65,19 +65,9 @@ public slots:
     void showAssessment();
 
 private:
-    Ui::MainWindow *ui;
-    Model* model;
-    QMediaPlayer *dotPlayer;
-    QAudioOutput *dotAudioOutput;
-    QMediaPlayer *dashPlayer;
-    QAudioOutput *dashAudioOutput;
-    ReferenceSheetDialog* referenceSheetDialog;
-    ShowAllDialog* showAllDialog;
-    bool captainMovingUp;
-    QString typingText;
-    QString toBeTyped;
     int timerCounter;
     QTimer* timer;
+
     Ui::MainWindow *ui; // ui
     Model* model; // the ui's copy of the model.
     QMediaPlayer *dotPlayer; // media player for the dot sound.
@@ -86,10 +76,10 @@ private:
     QAudioOutput *dashAudioOutput; // audio output for the dash sound.
     ReferenceSheetDialog* referenceSheetDialog;
     ShowAllDialog* showAllDialog;
-    bool captainMovingUp;
     QString typingText; // the captain's dialog text that has already been typed
     QString toBeTyped; // the captain's dialog text that has yet to be typed.
-    float elapsedTime;
+    float elapsedTime; //The elapsed time for the ship movement
+    float captainElapsedTime; //The elapsed time for the captain movement
 
     // Box2D
     b2World* world;
@@ -112,8 +102,5 @@ private:
      * is speaking the words in real time.
      */
     void typeCaptainText();
-
-    float elapsedTime;
-    float captainElapsedTime;
 };
 #endif // MAINWINDOW_H
