@@ -153,22 +153,22 @@ void MainWindow::toggleCaptain()
 
 void MainWindow::showCaptainText(QString text)
 {
+    typingText = "";
+    ui->CaptainDialogueText->setText("");
     toBeTyped = text;
     typeCaptainText();
 }
 
 void MainWindow::typeCaptainText()
 {
-    // if this is the end of the string, stop writing to the screen.
+    // if this is the end of the string, stop writing to the screen and clear previous text
     if (toBeTyped.size() == 0)
     {
-        toBeTyped = "";
-        typingText = "";
-        QTimer::singleShot(500, this, [this] {ui->CaptainDialogueText->setText("");});
         QTimer::singleShot(500, this, [this] {emit captainFinishedTalking();});
         return;
     }
 
+    // type one letter at a time by getting the first char of the toBeTyped string and typing it, then removing that letter.
     QChar c = toBeTyped.front();
     toBeTyped = toBeTyped.mid(1);
     typingText.append(c);

@@ -1,10 +1,3 @@
-Ahoy there! I hear you're the new Communications Officer for our little operation here! The last one didn't last too long, kept getting his dots and dashes mixed up. Strange Fellow...
-Anyways, welcome aboard the USS Blackfin! We're excited to have you onboard rookie. You're going to be responsible for decoding covert messages from our fellow submarines. We need to stay in communication, you know!
-I presume you know morse code already?
-What!? You don't?? How did you get this job??
-Well, nevermind that, we've launched already... Here, let me show you the basics and that should be enough for now.
-Let me show you the setup first. The screen above me here is where all incoming messages will appear in morse code. They will both type on screen and make noise at the same time. The box below that is where you will type incoming messages... in english, of course.
-All incoming messages will be sent directly to me. Don't worry if they're nonsense, that's just navy talk. I'll know what it means.
 Anyways, let's teach you the basic letters you need to know. I'll send you a message on screen to demonstrate what the letters look and sound like.
 
 This is A,
@@ -36,6 +29,8 @@ Alright rookie, which one is this?
 Awesome, and this one?
 
 That's it!
+
+Last in this batch, this is a period.
 
 Before you start translating messages, let me tell you about the pauses. In morse code, a "dot" is one unit of time, and a "dash" is three units. Between letters in a word, there will be a pause that is one dot worth of time, but between words in a sentance there will be a dash worth of time.
 Now that you've gotten that down, you're ready to start translating messgaes for the ship. The screen above me will only show 3 letters at a time -- if a word is longer than three letters, it will show the first three, then start typing the next three.
