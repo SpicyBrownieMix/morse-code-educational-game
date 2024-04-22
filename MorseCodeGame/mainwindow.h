@@ -6,7 +6,6 @@
 #include <string>
 #include <QtMultimedia>
 #include <QString>
-#include "motion.h"
 #include "referencesheetdialog.h"
 #include "showalldialog.h"
 
@@ -39,10 +38,11 @@ public slots:
     void showRefrenceSheet();
     void showEntireMessage();
     void showCurrentStreak(int streak);
-    void moveCaptain(int yPos);
+    void moveCaptain();
     void startNewGame();
     void receiveFullMessage(std::string s);
     void clearInputBox();
+    void startMoving();
 
     /**
      * @brief showAssessment
@@ -51,7 +51,6 @@ public slots:
     void showAssessment();
 
 private:
-    Motion motion;
     Ui::MainWindow *ui;
     Model* model;
     QMediaPlayer *dotPlayer;
@@ -63,10 +62,13 @@ private:
     bool captainMovingUp;
     QString typingText;
     QString toBeTyped;
+    int timerCounter;
+    QTimer* timer;
 
     // Box2D
     b2World* world;
     b2Body* backgroundBody;
+    b2Body* captainBody;
     float32 timeStep;
     int32 velocityIterations;
     int32 positionIterations;
@@ -83,5 +85,6 @@ private:
     void typeCaptainText();
 
     float elapsedTime;
+    float captainElapsedTime;
 };
 #endif // MAINWINDOW_H

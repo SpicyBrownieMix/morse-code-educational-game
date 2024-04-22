@@ -59,7 +59,6 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     model.cpp \
-    motion.cpp \
     referencesheetdialog.cpp \
     showalldialog.cpp
 
@@ -113,7 +112,6 @@ HEADERS += \
     Box2D/Rope/b2Rope.h \
     mainwindow.h \
     model.h \
-    motion.h \
     referencesheetdialog.h \
     showalldialog.h
 

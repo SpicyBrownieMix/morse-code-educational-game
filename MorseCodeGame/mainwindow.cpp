@@ -5,7 +5,6 @@
 #include <QtMultimedia>
 #include "referencesheetdialog.h"
 #include "showalldialog.h"
-#include "motion.h"
 #include <Box2D/Box2D.h>
 
 using std::string;
@@ -21,6 +20,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 {
     ui->setupUi(this);
     this->model = &model;
+    ui->centralwidget->setFixedSize(990, 740);
 
     referenceSheetDialog = new ReferenceSheetDialog(this);
     showAllDialog = new ShowAllDialog(this);
@@ -74,9 +74,6 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     connect(this, &MainWindow::refrenceOpened, &model, &Model::resetStreak);
     connect(&model, &Model::streakHighEnough, this, &MainWindow::showAssessment);
 
-    // box2D connections
-    connect(&motion, &Motion::newCaptainHeight, this, &MainWindow::moveCaptain);
-
     // start screen connections
     connect(ui->newGameButton, &QAbstractButton::pressed, this, &MainWindow::startNewGame);
     connect(ui->newGameButton, &QAbstractButton::pressed, &model, &Model::startNewGame);
@@ -94,10 +91,20 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     positionIterations = 2;
     initializeBox2D();
 
-    QTimer* timer = new QTimer(this);
+    //Motion start timer
+    QTimer* startMotionTimer = new QTimer(this);
+    connect(startMotionTimer, &QTimer::timeout, this, &MainWindow::startMoving);
+    startMotionTimer->start(10000);
+
+    //Motion active timer
+    timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &MainWindow::updateBox2D);
-    timer->start(100);
-    elapsedTime = 0.0f;
+
+    //Captain timer
+    QTimer* captainTimer = new QTimer(this);
+    connect(captainTimer, &QTimer::timeout, this, &MainWindow::moveCaptain);
+    captainTimer->start(50);
+    captainElapsedTime = 0;
 }
 
 MainWindow::~MainWindow()
@@ -196,14 +203,19 @@ void MainWindow::showCurrentStreak(int streak)
     ui->streaksLabel->setText("Streak: " + QString::number(streak));
 }
 
-void MainWindow::moveCaptain(int yPos)
+void MainWindow::moveCaptain()
 {
-    if(captainMovingUp)
-        ui->captainPicture->setGeometry(QRect(ui->captainPicture->x(), ui->captainPicture->y() + yPos, 141, 141));
-    else
-        ui->captainPicture->setGeometry(QRect(ui->captainPicture->x(), ui->captainPicture->y() - yPos, 141, 141));
+    world->Step(timeStep, velocityIterations, positionIterations);
 
-    captainMovingUp = !captainMovingUp;
+    captainElapsedTime += timeStep;
+
+    b2Vec2 position = captainBody->GetPosition();
+
+    float32 amplitude = 10.0f;
+    float32 frequency = 0.5f;
+    float32 displacement = amplitude * sin(2 * b2_pi * frequency * captainElapsedTime);
+
+    ui->captainPicture->move(ui->captainPicture->x(), displacement + position.y);
 }
 
 void MainWindow::initializeBox2D()
@@ -211,6 +223,7 @@ void MainWindow::initializeBox2D()
     b2Vec2 gravity(0.0f, -10.0f);
     world = new b2World(gravity);
 
+    //Background
     b2BodyDef backgroundBodyDef;
     backgroundBodyDef.type = b2_staticBody;
     backgroundBodyDef.position.Set(0.0f, 0.0f);
@@ -222,11 +235,36 @@ void MainWindow::initializeBox2D()
     b2FixtureDef backgrounFixtureDef;
     backgrounFixtureDef.shape = &backgroundShape;
     backgroundBody->CreateFixture(&backgrounFixtureDef);
+
+    //Captain
+    b2BodyDef captainBodyDef;
+    captainBodyDef.type = b2_staticBody;
+    captainBodyDef.position.Set(770.0f, 590.0f);
+    captainBody = world->CreateBody(&captainBodyDef);
+
+    b2PolygonShape captainShape;
+    backgroundShape.SetAsBox(1, 1);
+
+    b2FixtureDef captainFixtureDef;
+    captainFixtureDef.shape = &captainShape;
+    captainFixtureDef.density = 1.0f;
+    // Override the default friction.
+    captainFixtureDef.friction = 0.3f;
+    captainFixtureDef.restitution = 0.9f;
+    captainBody->CreateFixture(&captainFixtureDef);
 }
 
 
 void MainWindow::updateBox2D()
 {
+    timerCounter++;
+
+    if(timerCounter >= 50)
+    {
+        timer->stop();
+        return;
+    }
+
     world->Step(timeStep, velocityIterations, positionIterations);
 
     elapsedTime += timeStep;
@@ -238,6 +276,18 @@ void MainWindow::updateBox2D()
     float32 displacement = amplitude * sin(2 * b2_pi * frequency * elapsedTime);
 
     ui->background->move(backgroundPos.x + displacement, backgroundPos.y + displacement);
+    ui->textInputBox->move(backgroundPos.x + displacement + 280, backgroundPos.y + displacement + 465);
+    ui->assessmentButton->move(backgroundPos.x + displacement + 549, backgroundPos.y + displacement + 180);
+    ui->referenceSheetButton->move(backgroundPos.x + displacement + 90, backgroundPos.y + displacement + 610);
+    ui->showAllButton->move(backgroundPos.x + displacement + 420, backgroundPos.y + displacement + 390);
+    ui->streaksLabel->move(backgroundPos.x + displacement + 280, backgroundPos.y + displacement + 180);
+}
+
+void MainWindow::startMoving()
+{
+    timerCounter = 0;
+    timer->start(100);
+    elapsedTime = 0.0f;
 }
 
 void MainWindow::receiveFullMessage(string s)
