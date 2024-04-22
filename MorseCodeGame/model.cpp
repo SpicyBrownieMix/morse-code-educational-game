@@ -14,9 +14,13 @@ Model::Model(QObject *parent) : QObject{parent}
     morseString = "";
     message = "";
     streak = 0;
+    level = 1;
+    practicingLetter = true;
+
+    // populate constant data structure with information from text files
     fillMorseAlphabetMap();
     fillCaptainDialogList();
-    level = 1;
+    fillLetterLevelList();
     setUpTextfile();
 }
 
@@ -38,12 +42,37 @@ void Model::captainFinishedTalking()
     {
         advance(captainDialogIt,1);
         captainTalking = (*captainDialogIt).begin();
+        if (practicingLetter)
+            practiceLetter();
     }
 }
 
 void Model::textInputEntered(QString text)
 {
+    if (practicingLetter)
+        letterTextInput(text);
+    else
+        wordTextInput(text);
+}
+
+void Model::letterTextInput(QString text)
+{
+    char lower = *letterLevelsIt;
+    char upper = *letterLevelsIt - 26;
+    if (text == lower || text == upper)
+    {
+        advance(letterLevelsIt, 1);
+    }
+    else
+    {
+
+    }
+}
+
+void Model::wordTextInput(QString text)
+{
     bool correct = true;
+
     //Receive text and check it against the correct letters.
     QString incorrectString = "You got these wrong: ";
     if(text.length() != message.length())
@@ -55,6 +84,7 @@ void Model::textInputEntered(QString text)
         //pickRandomWord();
         return;
     }
+
     for (unsigned char i = 0; i < message.length(); i++)
     {
         if(text[i] != message[i])
@@ -85,7 +115,6 @@ void Model::textInputEntered(QString text)
         emit sendCaptainText("Hooray, you got it right!");
         pickRandomWord();
     }
-
 }
 
 void Model::fillMorseAlphabetMap()
@@ -102,6 +131,7 @@ void Model::fillMorseAlphabetMap()
         string line = in.readLine().toStdString();
         MORSE_ALPHABET.insert(pair<char,string>(line[0], line.substr(2)));
     }
+    file.close();
 }
 
 void Model::fillCaptainDialogList()
@@ -129,6 +159,26 @@ void Model::fillCaptainDialogList()
 
     captainDialogIt = captainDialog.begin();
     captainTalking = captainDialog.front().begin();
+    file.close();
+}
+
+void Model::fillLetterLevelList()
+{
+    // open the file that translates letters into morse
+    QFile file(":/assets/letterLevels.txt");
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        return;
+
+    // add the letter from the current line
+    QTextStream in(&file);
+    while (!in.atEnd())
+    {
+        char c = *in.readLine().toStdString().c_str();
+        letterLevels.push_back(c);
+    }
+
+    letterLevelsIt = letterLevels.begin();
+    file.close();
 }
 
 void Model::setUpTextfile()
@@ -236,3 +286,15 @@ void Model::assessmentStarted()
     //TODO: SEND THE ASSESMENT FOR THIS LEVEL
 }
 
+void Model::practiceLetter()
+{
+    string letter(1, *letterLevelsIt);
+    if (letter == '/')
+    {
+        practicingLetter = false;
+        return;
+    }
+    practicingLetter = true;
+    emit sendCaptainText(QString::fromStdString(*captainTalking));
+    emit sendMorse(letter);
+}
