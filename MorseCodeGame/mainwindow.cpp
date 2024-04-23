@@ -171,7 +171,7 @@ void MainWindow::typeCaptainText()
     // if this is the end of the string, stop writing to the screen and clear previous text
     if (toBeTyped.size() == 0)
     {
-        QTimer::singleShot(500, this, [this] {emit captainFinishedTalking();});
+        QTimer::singleShot(1000, this, [this] {emit captainFinishedTalking();});
         return;
     }
 

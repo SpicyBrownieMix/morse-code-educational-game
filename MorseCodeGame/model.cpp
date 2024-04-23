@@ -17,6 +17,7 @@ Model::Model(QObject *parent) : QObject{parent}
     level = 1;
     awaitingAnswer = false;
     practicingLetter = false;
+    talkedAboutStreak = false;
 
     // populate constant data structure with information from text files
     fillMorseAlphabetMap();
@@ -34,6 +35,9 @@ void Model::startNewGame()
 
 void Model::captainFinishedTalking()
 {
+    if (awaitingAnswer)
+        return;
+
     // check if the captain has more to say or if this is the end of the current schpeal
     if (captainTalking != (*captainDialogIt).end())
     {
@@ -49,11 +53,19 @@ void Model::captainFinishedTalking()
         // check if we should be practicing letters right now
         if (*captainTalking == "pl")
         {
-            if (awaitingAnswer)
-                return;
             advance(captainDialogIt,1);
             captainTalking = (*captainDialogIt).begin();
             practiceLetter();
+            return;
+        }
+        // check if we should be practicing words
+        if (*captainTalking == "pw")
+        {
+            practicingLetter = false;
+            advance(captainDialogIt,1);
+            captainTalking = (*captainDialogIt).begin();
+            emit toggleCaptain();
+            pickRandomWord();
             return;
         }
         // if not, then send the cap's next dialog line.
@@ -64,6 +76,7 @@ void Model::captainFinishedTalking()
     {
         advance(captainDialogIt,1);
         captainTalking = (*captainDialogIt).begin();
+        captainFinishedTalking();
     }
 }
 
@@ -114,7 +127,7 @@ void Model::textInputEntered(QString text)
 void Model::letterTextInput(QString text)
 {
     char lower = *(message.c_str());
-    char upper = lower - 26;
+    char upper = lower - 32;
     if (text == lower || text == upper)
     {
         awaitingAnswer = false;
@@ -131,17 +144,7 @@ void Model::wordTextInput(QString text)
     bool correct = true;
 
     //Receive text and check it against the correct letters.
-    QString incorrectString = "You got these wrong: ";
-    if(text.length() != message.length())
-    {
-        correct = false;
-        emit toggleCaptain();
-        emit sendCaptainText("The message length is incorrect. Please try again.");
-        resetStreak();
-        //pickRandomWord();
-        return;
-    }
-
+    QString incorrectString = "Hmm, looks like some of these letters are wrong... try again, and give the refernce sheet a peek if you feel stuck. The wrong ones are: ";
     for (unsigned char i = 0; i < message.length(); i++)
     {
         if(text[i] != message[i])
@@ -150,6 +153,14 @@ void Model::wordTextInput(QString text)
             incorrectString.append(", ");
             correct = false;
         }
+    }
+    if(text.length() != message.length())
+    {
+        correct = false;
+        emit toggleCaptain();
+        incorrectString = "Oops! This translation is the wrong length... give it another go!  ";
+        resetStreak();
+        return;
     }
 
     if(!correct)
@@ -164,12 +175,18 @@ void Model::wordTextInput(QString text)
         emit clearText();
         streak++;
         emit updateStreak(streak);
+        if (!talkedAboutStreak && streak >= 2)
+        {
+            // captain teaches the user about the streak function
+            captainFinishedTalking();
+        }
         if(streak >= 5)
         {
             emit streakHighEnough();
         }
         emit toggleCaptain();
-        emit sendCaptainText("Hooray, you got it right!");
+        sendCaptainText("Hooray, you got it right!");
+        emit toggleCaptain();
         pickRandomWord();
     }
 }
@@ -332,6 +349,8 @@ void Model::resetStreak()
 void Model::pickRandomWord()
 {
     //Pick a random word and display it.
+    emit clearMorseBox();
+    awaitingAnswer = true;
     int random = arc4random() % (currentWords.size() - 1);
     QString word = currentWords.at(random).toLower();
     message = word.toStdString();

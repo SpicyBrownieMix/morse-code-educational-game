@@ -1,7 +1,7 @@
 Anyways, let's teach you the basic letters you need to know. I'll send you a message on screen to demonstrate what the letters look and sound like.
 dl
 
-This is A,
+This is A.
 dl
 
 And this is E.
@@ -45,38 +45,47 @@ dl
 
 Last in this batch, this is a period.
 
-Before you start translating messages, let me tell you about the pauses. In morse code, a "dot" is one unit of time, and a "dash" is three units. Between letters in a word, there will be a pause that is one dot worth of time, but between words in a sentance there will be a dash worth of time.
+Before you start translating messages, let me tell you about the pauses. In morse code, a "dot" is one unit of time, and a "dash" is three units. Between letters in a word, there will be a pause that is one dot worth of time, but between words in a sentance there will be a pause that is a dash worth of time.
 Now that you've gotten that down, you're ready to start translating messgaes for the ship. The screen above me will only show 3 letters at a time -- if a word is longer than three letters, it will show the first three, then start typing the next three.
-Try to keep up, but don't worry too much if you get lost. You can press the "See whole message" button after it's done typing to see everything so far.
-And if you ever forget a letter, you can use the reference sheet on my left to refresh your memorry!
+Try to keep up, but don't worry too much if you get lost. You can press the "Show Entire Message" button after it's done typing to see everything so far.
+And this is important! If you ever forget a letter, you can use the reference sheet on my bottom left to refresh your memory!
 Good luck!
+pw
 
 Alright rookie, I see that you've been getting these messages right pretty consistently. The "streak" in the corner of the screen there shows you how many messages in a row you've gotten right without looking at the reference sheet.
 If you get 5 in a row right, you might just be ready to intoduce some new letters into your vocabulary!
 Let me know when you get there!
+pw
 
-You've gotten 5 in a row right already! Wow, that's mighty impressive. Well, it looks like we have a slightly more complex message incoming from headquarters.... if you can translate this correctly, I'll show you some new letter.
+You've gotten 5 in a row right already! Wow, that's mighty impressive. Well, it looks like we have a slightly more complex message incoming from headquarters.... if you can translate this correctly, I'll show you some new letters.
 Keep in mind, a longer pause that is equivalent to the length of a dash means a space between words.
 
-Great Job rookie! We'd better change our course and make sure we're in the right terrian. Good to know you're looking out for us. I'll get on those course corrections asap.
+Great Job rookie! We'd better change our course and make sure we're in the right terrian. Good to know you're looking out for us. I'll get on those course corrections A.S.A.P.
 But first, let's learn some new letters!
-pl
+dl
 
 To start, this is O.
+dl
 
 And this is U.
+pl
 
 Ok, now can you tell me which one this is?
+pl
 
 Amazing Job! What about this?
 
 Perfect. Let's do two more.
+dl
 
 This is L.
+dl
 
 This is S.
+pl
 
 Alright, which one is this?
+pl
 
 Perfect! And this?
 
@@ -85,23 +94,30 @@ You're a natural. That's all for now, but keep up the good work and you'll have 
 Wow, 5 more correct already? You're going to be up to speed in no time!
 Hmm... looks like we're getting another secret message from headquarters... If you can translate this, you'll be ready to learn a few more letters.
 Huh, just a weather update I guess.... well, nontheless, great job to you! Let's learn a few more, shall we?
-pl
+dl
 
 This is D.
+dl
 
 And this is Y.
+pl
 
 Ok, now let's give you a little test. What's this?
+pl
 
 Outstanding job rookie. What about this one?
 
 Great! Let's learn two more.
+dl
 
-This is C.
+This is C
+dl
 
 This is H.
+pl
 
 Ok, just a little test and then you'll be back in the driver's seat. What's this?
+pl
 
 Amazing! And this?
 
@@ -111,23 +127,30 @@ Wow, so many correct already? You might just be suited for this job.
 Hmm... looks like we're getting another secret message from headquarters... If you can translate this, you'll be ready to learn a few more letters.
 
 Wow! Alright then, let's learn a few more, shall we?
-pl
+dl
 
 This is G.
+dl
 
 And this is M.
+pl
 
 Ok, now let's give you a little test. What's this?
+pl
 
 Outstanding job rookie. What about this one?
 
 Great! Let's learn two more.
+dl
 
 This is P.
+dl
 
 This is K.
+pl
 
 Ok, now what's this?
+pl
 
 Amazing! And this?
 
@@ -137,23 +160,30 @@ You're outstanding rookie! You keep soaking up these letters like nobody's busin
 Hmm... looks like we're getting another secret message from headquarters... If you can translate this, you'll be ready to learn a few more letters.
 
 Wow! Alright then, let's learn a few more, shall we?
-pl
+dl
 
 This is B.
+dl
 
 And this is F.
+pl
 
 Ok, now a little test. What's this?
+pl
 
 That's it! What about this one?
 
 Great! Let's learn two more.
+dl
 
 This is W.
+dl
 
 This is V.
+pl
 
 Ok, now which one is this?
+pl
 
 Amazing! And this?
 
@@ -163,23 +193,30 @@ By golly, you've almost learned the whole alphabet by now! We only have 4 more l
 Hmm... looks like we're getting another secret message from headquarters... If you can translate this, you'll be ready to learn a few more letters.
 
 Wow! Alright then, let's finish this up!
-pl
+dl
 
 This is Z.
+dl
 
 And this is X.
+pl
 
 Ok, now a little test. What's this?
+pl
 
 That's it! What about this one?
 
 Great! Let's learn two more.
+dl
 
 This is Q.
+dl
 
 This is J.
+pl
 
 Ok, now which one is this?
+pl
 
 Amazing! And this?
 
