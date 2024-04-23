@@ -1,34 +1,47 @@
 Anyways, let's teach you the basic letters you need to know. I'll send you a message on screen to demonstrate what the letters look and sound like.
+dl
 
 This is A,
+dl
 
 And this is E.
+pl
 
 Now, I'm going to send you one of the two. Can you tell me which one this is?
+pl
 
 Great job! And what is this one?
 
 You're better than the last guy already, rookie! Maybe I won't have to worry after all. Let's try a few more.
+dl
 
 This is I.
+dl
 
 This is T.
+pl
 
 Ok, now can you tell me which one this is?
+pl
 
 Amazing Job! What about this?
 
 Perfect. Let's learn two more and then you'll have the basics down.
+dl
 
 This is N.
+dl
 
 This is R.
+pl
 
 Alright rookie, which one is this?
+pl
 
 Awesome, and this one?
 
 That's it!
+dl
 
 Last in this batch, this is a period.
 
@@ -47,6 +60,7 @@ Keep in mind, a longer pause that is equivalent to the length of a dash means a 
 
 Great Job rookie! We'd better change our course and make sure we're in the right terrian. Good to know you're looking out for us. I'll get on those course corrections asap.
 But first, let's learn some new letters!
+pl
 
 To start, this is O.
 
@@ -71,6 +85,7 @@ You're a natural. That's all for now, but keep up the good work and you'll have 
 Wow, 5 more correct already? You're going to be up to speed in no time!
 Hmm... looks like we're getting another secret message from headquarters... If you can translate this, you'll be ready to learn a few more letters.
 Huh, just a weather update I guess.... well, nontheless, great job to you! Let's learn a few more, shall we?
+pl
 
 This is D.
 
@@ -96,6 +111,7 @@ Wow, so many correct already? You might just be suited for this job.
 Hmm... looks like we're getting another secret message from headquarters... If you can translate this, you'll be ready to learn a few more letters.
 
 Wow! Alright then, let's learn a few more, shall we?
+pl
 
 This is G.
 
@@ -121,6 +137,7 @@ You're outstanding rookie! You keep soaking up these letters like nobody's busin
 Hmm... looks like we're getting another secret message from headquarters... If you can translate this, you'll be ready to learn a few more letters.
 
 Wow! Alright then, let's learn a few more, shall we?
+pl
 
 This is B.
 
@@ -145,7 +162,8 @@ You continue to impress. Well, I'll let you get back too it. If I see you keep u
 By golly, you've almost learned the whole alphabet by now! We only have 4 more letters to go, and then you'll be a master!
 Hmm... looks like we're getting another secret message from headquarters... If you can translate this, you'll be ready to learn a few more letters.
 
-Wow! Alright then, let's finish this up, shall we?
+Wow! Alright then, let's finish this up!
+pl
 
 This is Z.
 

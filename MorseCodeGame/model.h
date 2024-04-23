@@ -58,7 +58,8 @@ private:
     std::string message;
     int streak; //Counts the user's current streak.
     int level; //The level the user is currently on.
-    bool practicingLetter; // indicates weather the user is practicing letters, or full words.
+    bool practicingLetter;
+    bool awaitingAnswer; // indicates if the program should be waiting for the user's answer
 
     /**
      * @brief fillMorseAlphabetMap
@@ -106,6 +107,11 @@ private:
      * @brief practiceLetter
      */
     void practiceLetter();
+
+    /**
+     * @brief practiceLetter
+     */
+    void displayLetter();
 
     void letterTextInput(QString text);
     void wordTextInput(QString text);
