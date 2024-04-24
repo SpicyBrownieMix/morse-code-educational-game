@@ -182,7 +182,7 @@ void MainWindow::typeCaptainText()
     toBeTyped = toBeTyped.mid(1);
     typingText.append(c);
     ui->CaptainDialogueText->setText(typingText);
-    QTimer::singleShot(10, this, &MainWindow::typeCaptainText);
+    QTimer::singleShot(50, this, &MainWindow::typeCaptainText);
 }
 
 void MainWindow::showRefrenceSheet()

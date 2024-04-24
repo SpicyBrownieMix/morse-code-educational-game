@@ -31,6 +31,7 @@ Model::Model(QObject *parent) : QObject{parent}
 void Model::startNewGame()
 {
     // start captain's dialog
+    showCaptain();
     emit sendCaptainText(QString::fromStdString(*captainTalking));
     advance(captainTalking,1);
 }
@@ -71,6 +72,7 @@ void Model::captainFinishedTalking()
             return;
         }
         // if not, then send the cap's next dialog line.
+        showCaptain();
         emit sendCaptainText(QString::fromStdString(*captainTalking));
         advance(captainTalking,1);
     }
@@ -86,6 +88,7 @@ void Model::displayLetter()
 {
     advance(letterLevelsIt, 1);
     string letter(1, *letterLevelsIt);
+    showCaptain();
     emit sendCaptainText(QString::fromStdString(*captainTalking));
     advance(captainTalking, 1);
     emit clearMorseBox();
@@ -111,6 +114,7 @@ void Model::practiceLetter()
     message = letter;
 
     // send cap's dialog
+    showCaptain();
     emit sendCaptainText(QString::fromStdString(*captainTalking));
     advance(captainTalking, 1);
 
@@ -142,6 +146,7 @@ void Model::letterTextInput(QString text)
     }
     else
     {
+        showCaptain();
         emit sendCaptainText("Oops, that's not quite right! Give it another try.");
     }
 }

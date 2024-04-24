@@ -1,5 +1,51 @@
+Ahoy there! I hear you're the new Communications Officer for our little operation here! The last one didn't last too long, kept getting his dots and dashes mixed up. Strange Fellow...
+Anyways, welcome aboard the USS Blackfin! We're excited to have you onboard rookie. You're going to be responsible for decoding covert messages from our fellow submarines. We need to stay in communication, you know!
+I presume you know morse code already?
+What!? You don't?? How did you get this job??
+Well, nevermind that, we've launched already... Here, let me show you the basics and that should be enough for now.
+Let me show you the setup first. The screen above me here is where all incoming messages will appear in morse code. They will both type on screen and make noise at the same time. The box below that is where you will type incoming messages... in english, of course.
+All incoming messages will be sent directly to me. Don't worry if they're nonsense, that's just navy talk. I'll know what it means.
 Anyways, let's teach you the basic letters you need to know. I'll send you a message on screen to demonstrate what the letters look and sound like.
 dl
+
+This is A.
+dl
+
+And this is E.
+pl
+
+Now, I'm going to send you one of the two. Can you tell me which one this is?
+pl
+
+Great job! And what is this one?
+
+You're better than the last guy already, rookie! Maybe I won't have to worry after all. Let's try a few more.
+dl
+
+This is I.
+dl
+
+This is T.
+pl
+
+Ok, now can you tell me which one this is?
+pl
+
+Amazing Job! What about this?
+
+Perfect. Let's learn two more and then you'll have the basics down.
+dl
+
+This is N.
+dl
+
+This is R.
+pl
+
+Alright rookie, which one is this?
+pl
+
+Awesome, and this one?
 
 That's it!
 dl
@@ -7,6 +53,10 @@ dl
 Last in this batch, this is a period.
 
 Before you start translating messages, let me tell you about the pauses. In morse code, a "dot" is one unit of time, and a "dash" is three units. Between letters in a word, there will be a pause that is one dot worth of time, but between words in a sentance there will be a pause that is a dash worth of time.
+Now that you've gotten that down, you're ready to start translating messgaes for the ship. The screen above me will only show 3 letters at a time -- if a word is longer than three letters, it will show the first three, then start typing the next three.
+Try to keep up, but don't worry too much if you get lost. You can press the "Show Entire Message" button after it's done typing to see everything so far.
+And this is important! If you ever forget a letter, you can use the reference sheet on my bottom left to refresh your memory!
+Good luck!
 pw
 
 Alright rookie, I see that you've been getting these messages right pretty consistently. The "streak" in the corner of the screen there shows you how many messages in a row you've gotten right without looking at the reference sheet.
