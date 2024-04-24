@@ -18,13 +18,28 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    /**
+     * @brief MainWindow
+     * The constructor, initializes variables, does set up actions, and connects signals and slots.
+     * @param model, the model created in main.cpp
+     * @param parent, the parent widget.
+     */
     MainWindow(Model& model, QWidget *parent = nullptr);
     ~MainWindow();
 
 signals:
+    /**
+     * @brief submitTextInput
+     * When the user presses return sends the text in the textbox to the model to check for correctness.
+     * @param text, the text to check.
+     */
     void submitTextInput(QString text);
+
+    /**
+     * @brief refrenceOpened
+     * Sends out a signal when the refrence sheet was opened, used for updating the streak counter.
+     */
     void refrenceOpened();
-    void timerTimeout();
     void captainFinishedTalking();
 
 public slots:
@@ -32,6 +47,7 @@ public slots:
     void playDotSound();
     void playDashSound();
     void recieveMorseChar(std::string s);
+
     /**
      * @brief clearMorseBox
      * Clears the morse code that is printed on the main screen.
@@ -52,9 +68,12 @@ public slots:
 
     void startNewGame();
     void receiveFullMessage(std::string s);
+
+    /**
+     * @brief clearInputBox
+     * Clears all text from the user input box.
+     */
     void clearInputBox();
-
-
 
     /**
      * @brief showAssessment
@@ -63,8 +82,6 @@ public slots:
     void showAssessment();
 
 private:
-
-
     Ui::MainWindow *ui; // ui
     Model* model; // the ui's copy of the model.
     QMediaPlayer *dotPlayer; // media player for the dot sound.
@@ -77,15 +94,14 @@ private:
     QString toBeTyped; // the captain's dialog text that has yet to be typed.
     float elapsedTime; //The elapsed time for the ship movement
     float captainElapsedTime; //The elapsed time for the captain movement
-
     b2World* world; // Box2D world object for physics simulation.
     b2Body* backgroundBody; // Body representing the background in the Box2D world.
     b2Body* captainBody; // Body representing the captain character in the Box2D world.
     float32 timeStep; // Time step for the Box2D simulation.
     int32 velocityIterations; // Number of velocity iterations for the Box2D solver.
     int32 positionIterations; // Number of position iterations for the Box2D solver.
-    int timerCounter;
-    QTimer* timer;
+    int timerCounter; //Counts how many times the ship movement has changed.
+    QTimer* timer; //The timer for the box2d movement.
 
     /**
     * @brief Initializes the Box2D world with necessary bodies and fixtures.

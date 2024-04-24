@@ -2,10 +2,8 @@
 #define MODEL_H
 
 #include <QObject>
-#include <iostream>
 #include <QTimer>
 #include <Box2D/Box2D.h>
-#include <iterator>
 #include <list>
 
 class Model : public QObject
@@ -16,10 +14,26 @@ public:
     explicit Model(QObject *parent = nullptr);
 
 public slots:
+    /**
+     * @brief textInputEntered
+     * Checks entered text for correctness and does appropriate actions based on result and game state.
+     * @param text, the text to check.
+     */
     void textInputEntered(QString text);
+
+    /**
+     * @brief resetStreak
+     * Sets the streak back to 0.
+     */
     void resetStreak();
     void startNewGame();
+
+    /**
+     * @brief assessmentStarted
+     * When the assessment button is clicked, starts the assessment for the user.
+     */
     void assessmentStarted();
+
     /**
      * @brief captainFinishedTalking
      * When the view sends the signal that the captain has finished his previous sentance, this method
@@ -29,16 +43,63 @@ public slots:
 
 
 signals:
-    void sendMorseChar(std::string s); // sends a single morse character to the view.
-    void playDotSound(); // signals the view to play the "dot" sound
-    void playDashSound(); // signals the view to play the "dash" sound
-    void clearMorseBox(); // signals the view to clear any morse code that is currently on screen
-    //void toggleCaptain(); // signals the view to either show or hide the captain, depending on the previous state.
+    /**
+     * @brief sendMorseChar
+     * Sends a single morse character to the view.
+     * @param s
+     */
+    void sendMorseChar(std::string s);
+
+    /**
+     * @brief playDotSound
+     * Signals the view to play the "dot" sound
+     */
+    void playDotSound();
+
+    /**
+     * @brief playDashSound
+     * Signals the view to play the "dash" sound
+     */
+    void playDashSound();
+
+    /**
+     * @brief clearMorseBox
+     * Signals the view to clear any morse code that is currently on screen
+     */
+    void clearMorseBox();
+
+    /**
+     * @brief showCaptain
+     * Tells the main window to show the captain on the screen.
+     */
     void showCaptain();
+
+    /**
+     * @brief hideCaptain
+     * Tells the main window to hide the captain.
+     */
     void hideCaptain();
-    void sendCaptainText(QString text); // send the captain text to say.
+
+    /**
+     * @brief sendCaptainText
+     * Sends the captain text to say.
+     * @param text, the text to say.
+     */
+    void sendCaptainText(QString text);
+
+    /**
+     * @brief updateStreak
+     * Tells the main window the streak has changed.
+     * @param streak, the new value of the streak.
+     */
     void updateStreak(int streak);
+
     void sendFullMessage(std::string text);
+
+    /**
+     * @brief clearText
+     * Clears the text from the input box.
+     */
     void clearText();
 
     /**
@@ -85,6 +146,10 @@ private:
      */
     void fillLetterLevelList();
 
+    /**
+     * @brief fillAssessmentList
+     * Fills the assessment list with the assessments from the text file.
+     */
     void fillAssessmentList();
 
     /**

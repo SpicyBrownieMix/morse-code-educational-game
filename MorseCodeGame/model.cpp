@@ -1,6 +1,4 @@
 #include "model.h"
-#include <iostream>
-#include <fstream>
 #include <QFile>
 #include <QTextStream>
 #include <QTimer>
@@ -31,7 +29,7 @@ Model::Model(QObject *parent) : QObject{parent}
 void Model::startNewGame()
 {
     // start captain's dialog
-    showCaptain();
+    emit showCaptain();
     emit sendCaptainText(QString::fromStdString(*captainTalking));
     advance(captainTalking,1);
 }
@@ -72,7 +70,7 @@ void Model::captainFinishedTalking()
             return;
         }
         // if not, then send the cap's next dialog line.
-        showCaptain();
+        emit showCaptain();
         emit sendCaptainText(QString::fromStdString(*captainTalking));
         advance(captainTalking,1);
     }
@@ -88,7 +86,7 @@ void Model::displayLetter()
 {
     advance(letterLevelsIt, 1);
     string letter(1, *letterLevelsIt);
-    showCaptain();
+    emit showCaptain();
     emit sendCaptainText(QString::fromStdString(*captainTalking));
     advance(captainTalking, 1);
     emit clearMorseBox();
@@ -114,13 +112,13 @@ void Model::practiceLetter()
     message = letter;
 
     // send cap's dialog
-    showCaptain();
+    emit showCaptain();
     emit sendCaptainText(QString::fromStdString(*captainTalking));
     advance(captainTalking, 1);
 
     // display the letter
     emit clearMorseBox();
-    emit sendMorse(letter);
+    sendMorse(letter);
 }
 
 
@@ -146,7 +144,7 @@ void Model::letterTextInput(QString text)
     }
     else
     {
-        showCaptain();
+        emit showCaptain();
         emit sendCaptainText("Oops, that's not quite right! Give it another try.");
     }
 }
@@ -157,7 +155,7 @@ void Model::wordTextInput(QString text)
 
     //Receive text and check it against the correct letters.
     QString incorrectString = "Hmm, looks like some of these letters are wrong... try again, and give the reference sheet a peek if you feel stuck. The wrong ones are: ";
-    if(text.length() != message.length())
+    if((int)text.length() != (int)message.length())
     {
         correct = false;
         incorrectString = "Oops! This translation is the wrong length... give it another go!  ";
@@ -405,6 +403,7 @@ void Model::sendMorseHelper()
 
 void Model::resetStreak()
 {
+    //Sets streak to 0.
     streak = 0;
     emit updateStreak(streak);
 }
@@ -422,6 +421,7 @@ void Model::pickRandomWord()
 
 void Model::assessmentStarted()
 {
+    //Start assessment and send it to the user to decode.
     takingAssessment = true;
     emit clearMorseBox();
     message = *assessmentsIt;
