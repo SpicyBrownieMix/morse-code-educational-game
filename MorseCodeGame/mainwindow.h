@@ -48,11 +48,13 @@ public slots:
     void showRefrenceSheet();
     void showEntireMessage();
     void showCurrentStreak(int streak);
-    void moveCaptain();
+
+
     void startNewGame();
     void receiveFullMessage(std::string s);
     void clearInputBox();
-    void startMoving();
+
+
 
     /**
      * @brief showAssessment
@@ -61,8 +63,7 @@ public slots:
     void showAssessment();
 
 private:
-    int timerCounter;
-    QTimer* timer;
+
 
     Ui::MainWindow *ui; // ui
     Model* model; // the ui's copy of the model.
@@ -77,16 +78,56 @@ private:
     float elapsedTime; //The elapsed time for the ship movement
     float captainElapsedTime; //The elapsed time for the captain movement
 
-    // Box2D
-    b2World* world;
-    b2Body* backgroundBody;
-    b2Body* captainBody;
-    float32 timeStep;
-    int32 velocityIterations;
-    int32 positionIterations;
+    b2World* world; // Box2D world object for physics simulation.
+    b2Body* backgroundBody; // Body representing the background in the Box2D world.
+    b2Body* captainBody; // Body representing the captain character in the Box2D world.
+    float32 timeStep; // Time step for the Box2D simulation.
+    int32 velocityIterations; // Number of velocity iterations for the Box2D solver.
+    int32 positionIterations; // Number of position iterations for the Box2D solver.
+    int timerCounter;
+    QTimer* timer;
 
+    /**
+    * @brief Initializes the Box2D world with necessary bodies and fixtures.
+    *
+    * This function sets up the Box2D world with gravity and creates bodies and fixtures
+    * for the background and the captain's character. It sets their positions, shapes,
+    * and physical properties such as density, friction, and restitution.
+    *
+    */
     void initializeBox2D();
+
+    /**
+    * @brief Updates the Box2D simulation and moves UI elements based on simulation results.
+    *
+    * This function is responsible for updating the Box2D simulation and adjusting the positions
+    * of UI elements according to the simulated physics. It increments a timer counter and stops
+    * the timer if it reaches a certain threshold to limit simulation updates. It then advances
+    * the Box2D world simulation, calculates displacement based on a sine wave formula to simulate
+    * a floating motion effect, and moves various UI elements accordingly relative to the background
+    * position.This function is called periodically to update the Box2D simulation and UI positions.
+    */
     void updateBox2D();
+
+    /**
+    *  @brief Move the captain's picture on the main window.
+    *
+    * This function is responsible for updating the position of the captain's picture
+    * based on the physics simulation of the captain's body in the Box2D world.
+    * This function is called periodically to update the captain's motion.
+    */
+    void moveCaptain();
+
+    /**
+    * @brief Starts the motion simulation and resets necessary variables.
+    *
+    * This function is responsible for starting the motion simulation by resetting
+    * the timer counter and starting a QTimer with a specified interval. It also
+    * resets the elapsed time variable to zero, preparing the simulation for a fresh start.
+    * This function is called to initiate the motion simulation.
+    */
+    void startMoving();
+
     /**
      * @brief hideAssessment
      * Hides and disables the assessment button.
