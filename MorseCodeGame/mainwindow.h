@@ -47,7 +47,7 @@ public slots:
     void showCaptainText(QString text);
     void showRefrenceSheet();
     void showEntireMessage();
-    void showCurrentStreak(int streak);
+    void showCurrentStreak(int streak, bool assessmentUnlocked);
     void moveCaptain();
     void startNewGame();
     void receiveFullMessage(std::string s);

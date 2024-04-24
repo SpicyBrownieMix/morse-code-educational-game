@@ -37,7 +37,7 @@ signals:
     void showCaptain();
     void hideCaptain();
     void sendCaptainText(QString text); // send the captain text to say.
-    void updateStreak(int streak);
+    void updateStreak(int streak, bool assessmentUnlocked);
     void sendFullMessage(std::string text);
     void clearText();
 
@@ -65,8 +65,11 @@ private:
     bool practicingLetter; // indicates wether the user is practicing letters right now or not
     bool awaitingAnswer; // indicates if the program should be waiting for the user's answer
     bool talkedAboutStreak; // indicates wether the captain has talked about the streak yet.
-    bool takingAssessment;
-
+    bool takingAssessment; // indicates if the user is currently taking the assessnment
+    bool assessmentUnlocked; // indicates wether the assessment has been unlocked for this level (in which case it should not be hidden again)
+    bool sendingMorse; // currently sending morse.
+    //bool done; // indicates wether the current message being sent has been intercepted with a new one, and needs to be canceled.
+    bool captainTalking;
     /**
      * @brief fillMorseAlphabetMap
      * reads from the morseAlphabet.txt file to fill in the MORSE_ALPHABET map

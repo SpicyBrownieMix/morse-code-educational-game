@@ -19,6 +19,8 @@ Model::Model(QObject *parent) : QObject{parent}
     practicingLetter = false;
     talkedAboutStreak = false;
     takingAssessment = false;
+    assessmentUnlocked = false;
+    sendingMorse = false;
 
     // populate constant data structure with information from text files
     fillMorseAlphabetMap();
@@ -31,7 +33,7 @@ Model::Model(QObject *parent) : QObject{parent}
 void Model::startNewGame()
 {
     // start captain's dialog
-    showCaptain();
+    emit showCaptain();
     emit sendCaptainText(QString::fromStdString(*captainTalking));
     advance(captainTalking,1);
 }
@@ -72,7 +74,7 @@ void Model::captainFinishedTalking()
             return;
         }
         // if not, then send the cap's next dialog line.
-        showCaptain();
+        emit showCaptain();
         emit sendCaptainText(QString::fromStdString(*captainTalking));
         advance(captainTalking,1);
     }
@@ -88,11 +90,11 @@ void Model::displayLetter()
 {
     advance(letterLevelsIt, 1);
     string letter(1, *letterLevelsIt);
-    showCaptain();
+    emit showCaptain();
     emit sendCaptainText(QString::fromStdString(*captainTalking));
     advance(captainTalking, 1);
     emit clearMorseBox();
-    emit sendMorse(letter);
+    sendMorse(letter);
 }
 
 void Model::practiceLetter()
@@ -114,21 +116,23 @@ void Model::practiceLetter()
     message = letter;
 
     // send cap's dialog
-    showCaptain();
+    emit showCaptain();
     emit sendCaptainText(QString::fromStdString(*captainTalking));
     advance(captainTalking, 1);
 
     // display the letter
     emit clearMorseBox();
-    emit sendMorse(letter);
+    sendMorse(letter);
 }
 
 
 void Model::textInputEntered(QString text)
 {
-    emit hideCaptain();
-    if (!awaitingAnswer)
+    // If the user is inputing things when they don't need to be, ignore it.
+    if (!awaitingAnswer || sendingMorse)
         return;
+
+    emit hideCaptain();
     if (practicingLetter)
         letterTextInput(text);
     else
@@ -146,7 +150,7 @@ void Model::letterTextInput(QString text)
     }
     else
     {
-        showCaptain();
+        emit showCaptain();
         emit sendCaptainText("Oops, that's not quite right! Give it another try.");
     }
 }
@@ -179,7 +183,7 @@ void Model::wordTextInput(QString text)
     {
         if(takingAssessment)
         {
-            incorrectString = "Oh no! Looks like you got that wrong. Why don't you try again?";
+            incorrectString = "Oh no! Looks like you got that wrong. Why don't you try again?  ";
         }
         resetStreak();
         incorrectString.erase(incorrectString.end()-2, incorrectString.end());
@@ -196,15 +200,17 @@ void Model::wordTextInput(QString text)
             emit showCaptain();
             captainFinishedTalking();
             level++;
-            resetStreak();
             takingAssessment = false;
+            assessmentUnlocked = false;
+            resetStreak();
+            setUpTextfile();
             return;
         }
 
         streak++;
-        emit updateStreak(streak);
+        emit updateStreak(streak, assessmentUnlocked);
 
-        if (!talkedAboutStreak && streak >= 2)
+        if (!talkedAboutStreak && streak >= 3)
         {
             // captain teaches the user about the streak function
             emit showCaptain();
@@ -212,16 +218,14 @@ void Model::wordTextInput(QString text)
             captainFinishedTalking();
             return;
         }
-        if (streak == 5)
+        if (streak == 5 && !assessmentUnlocked)
         {
             emit showCaptain();
             captainFinishedTalking();
+            assessmentUnlocked = true;
             emit streakHighEnough();
             return;
         }
-        //emit toggleCaptain();
-        //sendCaptainText("Hooray, you got it right!");
-        //emit toggleCaptain();
         pickRandomWord();
     }
 }
@@ -298,7 +302,7 @@ void Model::setUpTextfile()
     if (level == 1)
         filename = ":/assets/levelOneWords";
     else if (level == 2)
-        filename = ":/assets/levelTwoWords";
+        filename = ":/assets/levelTwoWords.txt";
     else if (level == 3)
         filename = ":/assets/levelThreeWords";
     else if (level == 4)
@@ -352,6 +356,7 @@ void Model::sendMorse(string word)
 
     morseString.erase(morseString.end()-1, morseString.end());
     onScreenLetterCounter = 0;
+    sendingMorse = true;
     QTimer::singleShot(100, this, &Model::sendMorseHelper);
     emit sendFullMessage(morseString);
 
@@ -368,7 +373,10 @@ void Model::sendMorseHelper()
 
     // if this is the end of the string, stop writing to the screen.
     if (morseString.size() == 0)
+    {
+        sendingMorse = false;
         return;
+    }
 
     // send the first letter of the string to the view, and then remove that letter from the string.
     // tell the view to play the appropriate sound with the dot or dash
@@ -406,7 +414,7 @@ void Model::sendMorseHelper()
 void Model::resetStreak()
 {
     streak = 0;
-    emit updateStreak(streak);
+    emit updateStreak(streak, assessmentUnlocked);
 }
 
 void Model::pickRandomWord()
