@@ -16,5 +16,6 @@
         <file>levelFourWords</file>
         <file>levelSixWords</file>
         <file>letterLevels.txt</file>
+        <file>assesmentSentances.txt</file>
     </qresource>
 </RCC>

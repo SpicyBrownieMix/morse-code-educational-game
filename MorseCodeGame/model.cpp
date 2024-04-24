@@ -18,6 +18,7 @@ Model::Model(QObject *parent) : QObject{parent}
     awaitingAnswer = false;
     practicingLetter = false;
     talkedAboutStreak = false;
+    takingAssessment = false;
 
     // populate constant data structure with information from text files
     fillMorseAlphabetMap();
@@ -82,26 +83,29 @@ void Model::captainFinishedTalking()
 
 void Model::displayLetter()
 {
-    emit clearMorseBox();
     advance(letterLevelsIt, 1);
     string letter(1, *letterLevelsIt);
     emit sendCaptainText(QString::fromStdString(*captainTalking));
     advance(captainTalking, 1);
+    emit clearMorseBox();
     emit sendMorse(letter);
 }
 
 void Model::practiceLetter()
 {
     // enable text box etc.
-    emit clearMorseBox();
     awaitingAnswer = true;
     string letter;
 
     // choose one of the two letters shown.
     int random = arc4random() % 2;
-    if (random == 0 || *(message.c_str()) == *letterLevelsIt)
+    if (random == 0)
         letter = string(1,  *(prev(letterLevelsIt)));
-    else if (random == 1 || *(message.c_str()) == *(prev(letterLevelsIt)))
+    if (random == 1)
+        letter = string(1, *letterLevelsIt);
+    if (*(message.c_str()) == *letterLevelsIt)
+        letter = string(1,  *(prev(letterLevelsIt)));
+    if(*(message.c_str()) == *(prev(letterLevelsIt)))
         letter = string(1, *letterLevelsIt);
     message = letter;
 
@@ -110,6 +114,7 @@ void Model::practiceLetter()
     advance(captainTalking, 1);
 
     // display the letter
+    emit clearMorseBox();
     emit sendMorse(letter);
 }
 
@@ -135,7 +140,7 @@ void Model::letterTextInput(QString text)
     }
     else
     {
-         emit sendCaptainText("Oops, that's not quite right! Give it another try.");
+        emit sendCaptainText("Oops, that's not quite right! Give it another try.");
     }
 }
 
@@ -175,18 +180,23 @@ void Model::wordTextInput(QString text)
         emit clearText();
         streak++;
         emit updateStreak(streak);
+        awaitingAnswer = false;
         if (!talkedAboutStreak && streak >= 2)
         {
             // captain teaches the user about the streak function
+            emit toggleCaptain();
+            talkedAboutStreak = true;
             captainFinishedTalking();
+            return;
         }
-        if(streak >= 5)
+        if (streak >= 5)
         {
+            captainFinishedTalking();
             emit streakHighEnough();
         }
-        emit toggleCaptain();
-        sendCaptainText("Hooray, you got it right!");
-        emit toggleCaptain();
+        //emit toggleCaptain();
+        //sendCaptainText("Hooray, you got it right!");
+        //emit toggleCaptain();
         pickRandomWord();
     }
 }
@@ -289,6 +299,25 @@ void Model::setUpTextfile()
     file.close();
 }
 
+void Model::fillAssessmentList()
+{
+    // open the file that translates letters into morse
+    QFile file(":/assets/assessmentSentances.txt");
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        return;
+
+    // add the letter from the current line as the key and the morse code as the value
+    QTextStream in(&file);
+    while (!in.atEnd())
+    {
+        string line = in.readLine().toStdString();
+        assessments.push_back(line);
+    }
+
+    assessmentsIt = assessments.begin();
+    file.close();
+}
+
 void Model::sendMorse(string word)
 {
     for (char c : word)
@@ -296,6 +325,8 @@ void Model::sendMorse(string word)
         morseString += MORSE_ALPHABET.at(c) + "  ";
     }
 
+    morseString.erase(morseString.end()-1, morseString.end());
+    onScreenLetterCounter = 0;
     QTimer::singleShot(100, this, &Model::sendMorseHelper);
     emit sendFullMessage(morseString);
 
@@ -336,6 +367,13 @@ void Model::sendMorseHelper()
         QTimer::singleShot(600, this, &Model::sendMorseHelper);
         emit sendMorseChar("•");
     }
+    else if (c == '/')
+    {
+        QTimer::singleShot(800, this, &Model::sendMorseHelper);
+        emit sendMorseChar("");
+        onScreenLetterCounter = 0;
+        emit clearMorseBox();
+    }
     else
         return;
 }
@@ -348,16 +386,20 @@ void Model::resetStreak()
 
 void Model::pickRandomWord()
 {
-    //Pick a random word and display it.
+    // Pick a random word and display it.
     emit clearMorseBox();
     awaitingAnswer = true;
     int random = arc4random() % (currentWords.size() - 1);
     QString word = currentWords.at(random).toLower();
     message = word.toStdString();
-    QTimer::singleShot(1000, this, [word, this]() {sendMorse(message);});
+    sendMorse(message);
 }
 
 void Model::assessmentStarted()
 {
-    //TODO: SEND THE ASSESMENT FOR THIS LEVEL
+    takingAssessment = true;
+    emit clearMorseBox();
+    message = *assessmentsIt;
+    advance(assessmentsIt, 1);
+    sendMorse(message);
 }

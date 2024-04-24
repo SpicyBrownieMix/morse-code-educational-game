@@ -52,6 +52,8 @@ private:
     std::list<std::string>::iterator captainTalking; // indicates that the captain has another dialog line after the current one &keeps track of the current line
     std::list<char> letterLevels; // the letters of the alphabet, in the order they are taught in the game
     std::list<char>::iterator letterLevelsIt; // iterator over the previous
+    std::list<std::string> assessments; // the letters of the alphabet, in the order they are taught in the game
+    std::list<std::string>::iterator assessmentsIt; // iterator over the previous
     QStringList currentWords; //The words that are in the current text file;
     int onScreenLetterCounter; // counts the current number of morse letters on screen
     std::string morseString; // the string of morse characters representing the current word or sentance being shown to the user.
@@ -61,6 +63,7 @@ private:
     bool practicingLetter; // indicates wether the user is practicing letters right now or not
     bool awaitingAnswer; // indicates if the program should be waiting for the user's answer
     bool talkedAboutStreak; // indicates wether the captain has talked about the streak yet.
+    bool takingAssessment;
 
     /**
      * @brief fillMorseAlphabetMap
@@ -79,6 +82,8 @@ private:
      * fill the letterLevel list (letterLevels) with the letters from the letterLevels.txt file
      */
     void fillLetterLevelList();
+
+    void fillAssessmentList();
 
     /**
      * @brief sendMorse

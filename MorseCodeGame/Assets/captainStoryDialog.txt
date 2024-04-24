@@ -1,55 +1,12 @@
 Anyways, let's teach you the basic letters you need to know. I'll send you a message on screen to demonstrate what the letters look and sound like.
 dl
 
-This is A.
-dl
-
-And this is E.
-pl
-
-Now, I'm going to send you one of the two. Can you tell me which one this is?
-pl
-
-Great job! And what is this one?
-
-You're better than the last guy already, rookie! Maybe I won't have to worry after all. Let's try a few more.
-dl
-
-This is I.
-dl
-
-This is T.
-pl
-
-Ok, now can you tell me which one this is?
-pl
-
-Amazing Job! What about this?
-
-Perfect. Let's learn two more and then you'll have the basics down.
-dl
-
-This is N.
-dl
-
-This is R.
-pl
-
-Alright rookie, which one is this?
-pl
-
-Awesome, and this one?
-
 That's it!
 dl
 
 Last in this batch, this is a period.
 
 Before you start translating messages, let me tell you about the pauses. In morse code, a "dot" is one unit of time, and a "dash" is three units. Between letters in a word, there will be a pause that is one dot worth of time, but between words in a sentance there will be a pause that is a dash worth of time.
-Now that you've gotten that down, you're ready to start translating messgaes for the ship. The screen above me will only show 3 letters at a time -- if a word is longer than three letters, it will show the first three, then start typing the next three.
-Try to keep up, but don't worry too much if you get lost. You can press the "Show Entire Message" button after it's done typing to see everything so far.
-And this is important! If you ever forget a letter, you can use the reference sheet on my bottom left to refresh your memory!
-Good luck!
 pw
 
 Alright rookie, I see that you've been getting these messages right pretty consistently. The "streak" in the corner of the screen there shows you how many messages in a row you've gotten right without looking at the reference sheet.
@@ -59,6 +16,8 @@ pw
 
 You've gotten 5 in a row right already! Wow, that's mighty impressive. Well, it looks like we have a slightly more complex message incoming from headquarters.... if you can translate this correctly, I'll show you some new letters.
 Keep in mind, a longer pause that is equivalent to the length of a dash means a space between words.
+Also, if you look at the "Show Entire Message" button, a slash (/) represents a space.
+pw
 
 Great Job rookie! We'd better change our course and make sure we're in the right terrian. Good to know you're looking out for us. I'll get on those course corrections A.S.A.P.
 But first, let's learn some new letters!
