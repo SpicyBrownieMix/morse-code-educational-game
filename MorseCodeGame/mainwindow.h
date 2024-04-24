@@ -37,11 +37,7 @@ public slots:
      * Clears the morse code that is printed on the main screen.
      */
     void clearMorseBox();
-    /**
-     * @brief toggleCaptain
-     * Turn's the captain's dialog box, picture, and background on or off (depends on the previous state).
-     */
-    void toggleCaptain();
+
     /**
      * @brief showCaptainText
      * when the model sends the captain something to say, call typeCaptainText to type it on screen
@@ -102,5 +98,11 @@ private:
      * is speaking the words in real time.
      */
     void typeCaptainText();
+
+    /**
+     * @brief captainVisibility
+     * Turn's the captain's dialog box, picture, and background on or off (depends on the previous state).
+     */
+    void captainVisibility(bool show);
 };
 #endif // MAINWINDOW_H

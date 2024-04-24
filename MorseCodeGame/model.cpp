@@ -24,6 +24,7 @@ Model::Model(QObject *parent) : QObject{parent}
     fillMorseAlphabetMap();
     fillCaptainDialogList();
     fillLetterLevelList();
+    fillAssessmentList();
     setUpTextfile();
 }
 
@@ -65,7 +66,7 @@ void Model::captainFinishedTalking()
             practicingLetter = false;
             advance(captainDialogIt,1);
             captainTalking = (*captainDialogIt).begin();
-            emit toggleCaptain();
+            emit hideCaptain();
             pickRandomWord();
             return;
         }
@@ -121,6 +122,7 @@ void Model::practiceLetter()
 
 void Model::textInputEntered(QString text)
 {
+    emit hideCaptain();
     if (!awaitingAnswer)
         return;
     if (practicingLetter)
@@ -149,50 +151,68 @@ void Model::wordTextInput(QString text)
     bool correct = true;
 
     //Receive text and check it against the correct letters.
-    QString incorrectString = "Hmm, looks like some of these letters are wrong... try again, and give the refernce sheet a peek if you feel stuck. The wrong ones are: ";
-    for (unsigned char i = 0; i < message.length(); i++)
-    {
-        if(text[i] != message[i])
-        {
-            incorrectString.append(text[i]);
-            incorrectString.append(", ");
-            correct = false;
-        }
-    }
+    QString incorrectString = "Hmm, looks like some of these letters are wrong... try again, and give the reference sheet a peek if you feel stuck. The wrong ones are: ";
     if(text.length() != message.length())
     {
         correct = false;
-        emit toggleCaptain();
         incorrectString = "Oops! This translation is the wrong length... give it another go!  ";
-        resetStreak();
-        return;
+    }
+    else
+    {
+        for (unsigned char i = 0; i < message.length(); i++)
+        {
+            if(text[i] != message[i])
+            {
+                incorrectString.append(text[i]);
+                incorrectString.append(", ");
+                correct = false;
+            }
+        }
     }
 
     if(!correct)
     {
+        if(takingAssessment)
+        {
+            incorrectString = "Oh no! Looks like you got that wrong. Why don't you try again?";
+        }
         resetStreak();
         incorrectString.erase(incorrectString.end()-2, incorrectString.end());
-        emit toggleCaptain();
+        emit showCaptain();
         emit sendCaptainText(incorrectString);
     }
     else
     {
+        awaitingAnswer = false;
         emit clearText();
+
+        if(takingAssessment)
+        {
+            emit showCaptain();
+            captainFinishedTalking();
+            level++;
+            resetStreak();
+            takingAssessment = false;
+            return;
+        }
+
         streak++;
         emit updateStreak(streak);
-        awaitingAnswer = false;
+
         if (!talkedAboutStreak && streak >= 2)
         {
             // captain teaches the user about the streak function
-            emit toggleCaptain();
+            emit showCaptain();
             talkedAboutStreak = true;
             captainFinishedTalking();
             return;
         }
-        if (streak >= 5)
+        if (streak == 5)
         {
+            emit showCaptain();
             captainFinishedTalking();
             emit streakHighEnough();
+            return;
         }
         //emit toggleCaptain();
         //sendCaptainText("Hooray, you got it right!");
@@ -302,7 +322,7 @@ void Model::setUpTextfile()
 void Model::fillAssessmentList()
 {
     // open the file that translates letters into morse
-    QFile file(":/assets/assessmentSentances.txt");
+    QFile file(":/assets/assesmentSentances.txt");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
         return;
 

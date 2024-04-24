@@ -33,7 +33,9 @@ signals:
     void playDotSound(); // signals the view to play the "dot" sound
     void playDashSound(); // signals the view to play the "dash" sound
     void clearMorseBox(); // signals the view to clear any morse code that is currently on screen
-    void toggleCaptain(); // signals the view to either show or hide the captain, depending on the previous state.
+    //void toggleCaptain(); // signals the view to either show or hide the captain, depending on the previous state.
+    void showCaptain();
+    void hideCaptain();
     void sendCaptainText(QString text); // send the captain text to say.
     void updateStreak(int streak);
     void sendFullMessage(std::string text);

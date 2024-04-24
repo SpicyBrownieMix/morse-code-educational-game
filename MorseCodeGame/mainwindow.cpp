@@ -62,8 +62,10 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     connect(&model, &Model::clearMorseBox, this, &MainWindow::clearMorseBox);
 
     // captain connections
-    connect(&model, &Model::toggleCaptain, this, &MainWindow::toggleCaptain);
+    //connect(&model, &Model::toggleCaptain, this, &MainWindow::toggleCaptain);
     connect(&model, &Model::sendCaptainText, this, &MainWindow::showCaptainText);
+    connect(&model, &Model::showCaptain, this, [this]{captainVisibility(true);});
+    connect(&model, &Model::hideCaptain, this, [this]{captainVisibility(false);});
 
     // popups
     connect(ui->referenceSheetButton, &QPushButton::clicked, this, &MainWindow::showRefrenceSheet);
@@ -151,11 +153,11 @@ void MainWindow::clearMorseBox()
     ui->morsePrinter->setText("");
 }
 
-void MainWindow::toggleCaptain()
+void MainWindow::captainVisibility(bool show)
 {
-    ui->CaptainDialogueBox->setVisible(!ui->CaptainDialogueBox->isVisible());
-    ui->CaptainDialogueText->setVisible(!ui->CaptainDialogueText->isVisible());
-    ui->captainPicture->setVisible(!ui->captainPicture->isVisible());
+    ui->CaptainDialogueBox->setVisible(show);
+    ui->CaptainDialogueText->setVisible(show);
+    ui->captainPicture->setVisible(show);
 }
 
 void MainWindow::showCaptainText(QString text)
@@ -180,7 +182,7 @@ void MainWindow::typeCaptainText()
     toBeTyped = toBeTyped.mid(1);
     typingText.append(c);
     ui->CaptainDialogueText->setText(typingText);
-    QTimer::singleShot(50, this, &MainWindow::typeCaptainText);
+    QTimer::singleShot(10, this, &MainWindow::typeCaptainText);
 }
 
 void MainWindow::showRefrenceSheet()
