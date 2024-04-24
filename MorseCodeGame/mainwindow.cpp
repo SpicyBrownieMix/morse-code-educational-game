@@ -84,7 +84,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     connect(&model, &Model::sendFullMessage, this, &MainWindow::receiveFullMessage);
 
     //assessment connection
-    connect(ui->assessmentButton, &QPushButton::clicked, &model, &Model::assessmentStarted);
+    connect(ui->assessmentButton, &QPushButton::pressed, &model, &Model::assessmentStarted);
 
     connect(this, &MainWindow::captainFinishedTalking, &model, &Model::captainFinishedTalking);
 

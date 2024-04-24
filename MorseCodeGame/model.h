@@ -51,7 +51,7 @@ private:
     std::map<char,std::string> MORSE_ALPHABET; // maps the letters of the alphabet to morse code
     std::list<std::list<std::string>> captainDialog; // store the captain's dialog. A list which contains's chunks of dialog, broken into lists of readable parts
     std::list<std::list<std::string>>::iterator captainDialogIt; // iterator over captain's dialog
-    std::list<std::string>::iterator captainTalking; // indicates that the captain has another dialog line after the current one &keeps track of the current line
+    std::list<std::string>::iterator captainRanting; // indicates that the captain has another dialog line after the current one &keeps track of the current line
     std::list<char> letterLevels; // the letters of the alphabet, in the order they are taught in the game
     std::list<char>::iterator letterLevelsIt; // iterator over the previous
     std::list<std::string> assessments; // the letters of the alphabet, in the order they are taught in the game
@@ -126,6 +126,7 @@ private:
 
     void letterTextInput(QString text);
     void wordTextInput(QString text);
+    void sendCaptainDialog(QString text);
 };
 
 #endif // MODEL_H
