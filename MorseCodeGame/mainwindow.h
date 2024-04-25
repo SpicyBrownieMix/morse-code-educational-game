@@ -51,12 +51,34 @@ signals:
      * Sends out a signal when the refrence sheet was opened, used for updating the streak counter.
      */
     void refrenceOpened();
+
+    /**
+     * @brief captainFinishedTalking
+     * Sends the signal that the captain has finished "talking," as in, he has finished everything that was sent to him in showCaptainText
+     */
     void captainFinishedTalking();
 
 public slots:
+
     void textEditingComplete();
+
+    /**
+     * @brief playDotSound
+     * Plays the "dot" sound.
+     */
     void playDotSound();
+
+    /**
+     * @brief playDashSound
+     * Plays the "dash" sound.
+     */
     void playDashSound();
+
+    /**
+     * @brief recieveMorseChar
+     * recieves a single morse code character, and prints it at the end of whatever is currently on the main screen (so it appears to be typed)
+     * @param s -- the character to be typed.
+     */
     void recieveMorseChar(std::string s);
 
     /**
@@ -72,12 +94,26 @@ public slots:
      * @param text -- The text to be typed.
      */
     void showCaptainText(QString text);
+
     void showRefrenceSheet();
     void showEntireMessage();
+
+    /**
+     * @brief showCurrentStreak
+     * updates the streak on screen, and shows/hides the button to take the assessment
+     *
+     * @param streak -- the new streak number to be displayed
+     * @param assessmentUnlocked -- if false, disable the assessmentButton. Otherwise, endable it.
+     */
     void showCurrentStreak(int streak, bool assessmentUnlocked);
 
-
+    /**
+     * @brief startNewGame
+     * When the start new game button is pressed, this method handles some of the setup of the ui
+     * (mainlly showing elements that were hidden)
+     */
     void startNewGame();
+
     void receiveFullMessage(std::string s);
 
     /**
@@ -142,6 +178,7 @@ private:
     * position.This function is called periodically to update the Box2D simulation and UI positions.
     */
     void updateBox2D();
+
     /**
     *  @brief Move the captain's picture on the main window.
     *

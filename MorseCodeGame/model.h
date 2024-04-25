@@ -37,6 +37,12 @@ public slots:
      * Sets the streak back to 0.
      */
     void resetStreak();
+
+    /**
+     * @brief startNewGame
+     * When the start new game button is pressed, handles the logic of starting a new game
+     * (basically starts the captain talking).
+     */
     void startNewGame();
 
     /**
@@ -105,6 +111,11 @@ signals:
      */
     void updateStreak(int streak, bool assessmentUnlocked);
 
+    /**
+     * @brief sendLevel
+     * Sends the current stored level number to the view
+     * @param level -- integer representing current level
+     */
     void sendLevel(int level);
 
     void sendFullMessage(std::string text);
@@ -120,13 +131,6 @@ signals:
      * The streak is high enough to continue to the assesment if desired.
      */
     void streakHighEnough();
-
-    /**
-     * @brief sendLevelNumber
-     * @param level integer representing current level
-     * Sends the current stored level number to the view
-     */
-    //void sendLevelNumber(int level);
 
 private:
     std::map<char,std::string> MORSE_ALPHABET; // maps the letters of the alphabet to morse code
@@ -178,11 +182,13 @@ private:
     /**
      * @brief sendMorse
      * Translates a word into a morse code string, and then sends the dots or dashes to the view on a regular basis so that it looks like it's "typing"
+     * This method simply starts the process, whereas sendMorseHelper does the recursive work of repeatedly sending letters.
      */
     void sendMorse(std::string word);
 
     /**
      * @brief sendMorseHelper
+     * Does the recursive work for sendMorse.
      */
     void sendMorseHelper();
 
@@ -201,25 +207,43 @@ private:
 
     /**
      * @brief practiceLetter
+     * Initiates the process of practicing a letter, by starting the captains dialog, showing a morse chcaracter on
+     * screen, and preparing to recieve user input.
      */
     void practiceLetter();
 
     /**
      * @brief displayLetter
+     * Initiates the process of the captain teaching the user a letter, but starting the captain's dialog,
+     * and showing a morse character on screen.
      */
     void displayLetter();
 
+    /**
+     * @brief letterTextInput
+     * Helper method for textInputEntered, which handles the work when the user is practicing letters. Checks for
+     * correctness, and sends the captain's approprite dialog lines in response.
+     *
+     * @param text -- the entered text to check
+     */
     void letterTextInput(QString text);
 
     /**
-     * @brief wordTextInput Checking if the entered text is correctly deciphered
-     * @param text  The entered text to check
+     * @brief wordTextInput
+     * Helper method for textInputEntered, which handles the work when the user is practicing words. Checks for
+     * correctness, and sends the captain's approprite dialog lines in response. This method also handles
+     * the logic for when the streak is high enough and when the assessment should be started, as well as checking
+     * if the assessment is correct and moving the user up a level if appropriate.
+     *
+     * @param text -- The entered text to check
      */
     void wordTextInput(QString text);
 
     /**
-     * @brief sendCaptainDialog The message that will be showing when the captain is speaking
-     * @param text The message to send
+     * @brief sendCaptainDialog
+     * The message that will be showing when the captain is speaking
+     *
+     * @param text -- The message to send
      */
     void sendCaptainDialog(QString text);
 };
