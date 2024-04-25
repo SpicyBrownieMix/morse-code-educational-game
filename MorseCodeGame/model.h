@@ -129,7 +129,7 @@ private:
     QStringList currentWords; //The words that are in the current text file;
     int onScreenLetterCounter; // counts the current number of morse letters on screen
     std::string morseString; // the string of morse characters representing the current word or sentance being shown to the user.
-    std::string message;
+    std::string message;    // The string of words that the player is trying to decode
     int streak; //Counts the user's current streak.
     int level; //The level the user is currently on.
     bool practicingLetter; // indicates wether the user is practicing letters right now or not
@@ -138,7 +138,7 @@ private:
     bool takingAssessment; // indicates if the user is currently taking the assessnment
     bool assessmentUnlocked; // indicates wether the assessment has been unlocked for this level (in which case it should not be hidden again)
     bool sendingMorse; // currently sending morse.
-    bool captainTalking; 
+    bool captainTalking; // Whether the captain is currently talking to the user
 
     /**
      * @brief fillMorseAlphabetMap
@@ -194,12 +194,22 @@ private:
     void practiceLetter();
 
     /**
-     * @brief practiceLetter
+     * @brief displayLetter
      */
     void displayLetter();
 
     void letterTextInput(QString text);
+
+    /**
+     * @brief wordTextInput Checking if the entered text is correctly deciphered
+     * @param text  The entered text to check
+     */
     void wordTextInput(QString text);
+
+    /**
+     * @brief sendCaptainDialog The message that will be showing when the captain is speaking
+     * @param text The message to send
+     */
     void sendCaptainDialog(QString text);
 };
 

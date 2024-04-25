@@ -181,6 +181,7 @@ void Model::wordTextInput(QString text)
     }
     else
     {
+        // If the entered string is incorrect, add the incorrect letters to the incorrectString
         for (unsigned char i = 0; i < message.length(); i++)
         {
             if(text[i] != message[i])
@@ -199,7 +200,7 @@ void Model::wordTextInput(QString text)
             incorrectString = "Oh no! Looks like you got that wrong. Why don't you try again?  ";
         }
         resetStreak();
-        incorrectString.erase(incorrectString.end()-2, incorrectString.end());
+        incorrectString.erase(incorrectString.end()-2, incorrectString.end());  // Removes the ',' from the end of the string
         emit showCaptain();
         sendCaptainDialog(incorrectString);
     }
