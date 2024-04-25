@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "model.h"
 #include "ui_mainwindow.h"
-#include <iostream>
 #include <QtMultimedia>
 #include "referencesheetdialog.h"
 #include "showalldialog.h"
@@ -217,6 +216,7 @@ void MainWindow::moveCaptain()
     float32 frequency = 0.5f;
     float32 displacement = amplitude * sin(2 * b2_pi * frequency * captainElapsedTime);
 
+    //Move captain position up and down.
     ui->captainPicture->move(ui->captainPicture->x(), displacement + position.y);
 }
 
@@ -250,6 +250,7 @@ void MainWindow::initializeBox2D()
     b2FixtureDef captainFixtureDef;
     captainFixtureDef.shape = &captainShape;
     captainFixtureDef.density = 1.0f;
+
     // Override the default friction.
     captainFixtureDef.friction = 0.3f;
     captainFixtureDef.restitution = 0.9f;
@@ -261,6 +262,7 @@ void MainWindow::updateBox2D()
 {
     timerCounter++;
 
+    //Stop moving so that it isnt constant.
     if(timerCounter >= 50)
     {
         timer->stop();
@@ -277,6 +279,7 @@ void MainWindow::updateBox2D()
     float32 frequency = 0.5f;
     float32 displacement = amplitude * sin(2 * b2_pi * frequency * elapsedTime);
 
+    //Moves the background and all other visible parts of the screen that should move as well.
     ui->background->move(backgroundPos.x + displacement, backgroundPos.y + displacement);
     ui->textInputBox->move(backgroundPos.x + displacement + 280, backgroundPos.y + displacement + 465);
     ui->assessmentButton->move(backgroundPos.x + displacement + 549, backgroundPos.y + displacement + 180);

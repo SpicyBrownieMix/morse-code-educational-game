@@ -1,6 +1,4 @@
 #include "model.h"
-#include <iostream>
-#include <fstream>
 #include <QFile>
 #include <QTextStream>
 #include <QTimer>
@@ -175,7 +173,7 @@ void Model::wordTextInput(QString text)
 
     //Receive text and check it against the correct letters.
     QString incorrectString = "Hmm, looks like some of these letters are wrong... try again, and give the reference sheet a peek if you feel stuck. The wrong ones are: ";
-    if(text.length() != message.length())
+    if((int)text.length() != (int)message.length())
     {
         correct = false;
         incorrectString = "Oops! This translation is the wrong length... give it another go!  ";
@@ -427,6 +425,7 @@ void Model::sendMorseHelper()
 
 void Model::resetStreak()
 {
+    //Sets streak to 0.
     streak = 0;
     emit updateStreak(streak, assessmentUnlocked);
 }
@@ -451,6 +450,7 @@ void Model::assessmentStarted()
         return;
     }
 
+    //Start assessment and send it to the user to decode.
     takingAssessment = true;
     emit clearMorseBox();
     message = *assessmentsIt;
