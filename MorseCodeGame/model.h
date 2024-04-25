@@ -92,7 +92,6 @@ signals:
      * Tells the main window the streak has changed.
      * @param streak, the new value of the streak.
      */
-    void updateStreak(int streak);
     void updateStreak(int streak, bool assessmentUnlocked);
 
     void sendFullMessage(std::string text);
@@ -127,7 +126,10 @@ private:
     bool practicingLetter; // indicates wether the user is practicing letters right now or not
     bool awaitingAnswer; // indicates if the program should be waiting for the user's answer
     bool talkedAboutStreak; // indicates wether the captain has talked about the streak yet.
-    bool takingAssessment;
+    bool takingAssessment; // indicates if the user is currently taking the assessnment
+    bool assessmentUnlocked; // indicates wether the assessment has been unlocked for this level (in which case it should not be hidden again)
+    bool sendingMorse; // currently sending morse.
+    bool captainTalking; 
 
     /**
      * @brief fillMorseAlphabetMap
