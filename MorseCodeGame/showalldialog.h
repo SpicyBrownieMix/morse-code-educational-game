@@ -25,13 +25,23 @@ class ShowAllDialog : public QDialog
     Q_OBJECT
 
 public:
+    /**
+     * @brief ShowAllDialog
+     * @param parent
+     * Constructor for the show entire message dialog window. Initializes the layout.
+     */
     explicit ShowAllDialog(QWidget *parent = nullptr);
     ~ShowAllDialog();
+    /**
+     * @brief setText
+     * @param s text the will be displayed
+     * Puts inputted string onto the window.
+     */
     void setText(std::string s);
 
 private:
-    Ui::ShowAllDialog *ui;
-    QLabel *label;
+    Ui::ShowAllDialog *ui; // ui
+    QLabel *label; // label that holds the text of the window
 };
 
 #endif // SHOWALLDIALOG_H

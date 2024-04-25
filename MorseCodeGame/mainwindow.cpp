@@ -72,7 +72,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     connect(&model, &Model::hideCaptain, this, [this]{captainVisibility(false);});
 
     // popups
-    connect(ui->referenceSheetButton, &QPushButton::clicked, this, &MainWindow::showRefrenceSheet);
+    connect(ui->referenceSheetButton, &QPushButton::clicked, this, &MainWindow::showReferenceSheet);
     connect(ui->showAllButton, &QPushButton::clicked, this, &MainWindow::showEntireMessage);
 
     // streak connections
@@ -192,7 +192,7 @@ void MainWindow::typeCaptainText()
     QTimer::singleShot(30, this, &MainWindow::typeCaptainText);
 }
 
-void MainWindow::showRefrenceSheet()
+void MainWindow::showReferenceSheet()
 {
     emit refrenceOpened();
     referenceSheetDialog->setModal(true);

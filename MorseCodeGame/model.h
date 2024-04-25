@@ -118,6 +118,11 @@ signals:
      */
     void sendLevel(int level);
 
+    /**
+     * @brief sendFullMessage
+     * Send the text to be displayed on entire message window.
+     * @param text string to be put on the entire message window.
+     */
     void sendFullMessage(std::string text);
 
     /**

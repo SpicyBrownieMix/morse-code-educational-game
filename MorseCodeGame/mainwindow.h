@@ -95,7 +95,16 @@ public slots:
      */
     void showCaptainText(QString text);
 
-    void showRefrenceSheet();
+    /**
+     * @brief showReferenceSheet
+     * Displays the reference sheet window.
+     */
+    void showReferenceSheet();
+
+    /**
+     * @brief showEntireMessage
+     * Displays the entire message window.
+     */
     void showEntireMessage();
 
     /**
@@ -114,6 +123,11 @@ public slots:
      */
     void startNewGame();
 
+    /**
+     * @brief receiveFullMessage
+     * Receives a string value from the model that will be displayed in the enire message window.
+     * @param s text from the model
+     */
     void receiveFullMessage(std::string s);
 
     /**
