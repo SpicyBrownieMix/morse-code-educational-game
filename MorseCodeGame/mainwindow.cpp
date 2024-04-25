@@ -83,7 +83,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     connect(&model, &Model::sendFullMessage, this, &MainWindow::receiveFullMessage);
 
     //assessment connection
-    connect(ui->assessmentButton, &QPushButton::clicked, &model, &Model::assessmentStarted);
+    connect(ui->assessmentButton, &QPushButton::pressed, &model, &Model::assessmentStarted);
 
     connect(this, &MainWindow::captainFinishedTalking, &model, &Model::captainFinishedTalking);
 
@@ -181,7 +181,7 @@ void MainWindow::typeCaptainText()
     toBeTyped = toBeTyped.mid(1);
     typingText.append(c);
     ui->CaptainDialogueText->setText(typingText);
-    QTimer::singleShot(50, this, &MainWindow::typeCaptainText);
+    QTimer::singleShot(30, this, &MainWindow::typeCaptainText);
 }
 
 void MainWindow::showRefrenceSheet()
@@ -197,9 +197,9 @@ void MainWindow::showEntireMessage()
     showAllDialog->show();
 }
 
-void MainWindow::showCurrentStreak(int streak)
+void MainWindow::showCurrentStreak(int streak, bool assessmentUnlocked)
 {
-    if(streak == 0)
+    if(streak == 0 && !assessmentUnlocked)
         hideAssessment();
     ui->streaksLabel->setText("Streak: " + QString::number(streak));
 }
