@@ -64,6 +64,7 @@ public slots:
     void showRefrenceSheet();
     void showEntireMessage();
     void showCurrentStreak(int streak);
+    void showCurrentStreak(int streak, bool assessmentUnlocked);
 
 
     void startNewGame();
@@ -124,6 +125,25 @@ private:
     * position.This function is called periodically to update the Box2D simulation and UI positions.
     */
     void updateBox2D();
+
+    /**
+    *  @brief Move the captain's picture on the main window.
+    *
+    * This function is responsible for updating the position of the captain's picture
+    * based on the physics simulation of the captain's body in the Box2D world.
+    * This function is called periodically to update the captain's motion.
+    */
+    void moveCaptain();
+
+    /**
+    * @brief Starts the motion simulation and resets necessary variables.
+    *
+    * This function is responsible for starting the motion simulation by resetting
+    * the timer counter and starting a QTimer with a specified interval. It also
+    * resets the elapsed time variable to zero, preparing the simulation for a fresh start.
+    * This function is called to initiate the motion simulation.
+    */
+    void startMoving();
 
     /**
     *  @brief Move the captain's picture on the main window.

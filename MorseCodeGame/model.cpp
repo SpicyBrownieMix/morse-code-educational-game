@@ -17,6 +17,9 @@ Model::Model(QObject *parent) : QObject{parent}
     practicingLetter = false;
     talkedAboutStreak = false;
     takingAssessment = false;
+    assessmentUnlocked = false;
+    sendingMorse = false;
+    captainTalking = false;
 
     // populate constant data structure with information from text files
     fillMorseAlphabetMap();
@@ -30,71 +33,84 @@ void Model::startNewGame()
 {
     // start captain's dialog
     emit showCaptain();
-    emit sendCaptainText(QString::fromStdString(*captainTalking));
-    advance(captainTalking,1);
+    sendCaptainDialog(QString::fromStdString(*captainRanting));
+    advance(captainRanting,1);
 }
 
 void Model::captainFinishedTalking()
 {
+    captainTalking = false;
     if (awaitingAnswer)
         return;
 
     // check if the captain has more to say or if this is the end of the current schpeal
-    if (captainTalking != (*captainDialogIt).end())
+    if (captainRanting != (*captainDialogIt).end())
     {
         // check if we should be displaying letters right now
-        if (*captainTalking == "dl")
+        if (*captainRanting == "dl")
         {
             practicingLetter = true;
             advance(captainDialogIt,1);
-            captainTalking = (*captainDialogIt).begin();
+            captainRanting = (*captainDialogIt).begin();
             displayLetter();
             return;
         }
         // check if we should be practicing letters right now
-        if (*captainTalking == "pl")
+        if (*captainRanting == "pl")
         {
             advance(captainDialogIt,1);
-            captainTalking = (*captainDialogIt).begin();
+            captainRanting = (*captainDialogIt).begin();
             practiceLetter();
             return;
         }
         // check if we should be practicing words
-        if (*captainTalking == "pw")
+        if (*captainRanting == "pw")
         {
             practicingLetter = false;
             advance(captainDialogIt,1);
-            captainTalking = (*captainDialogIt).begin();
+            captainRanting = (*captainDialogIt).begin();
             emit hideCaptain();
             pickRandomWord();
             return;
         }
         // if not, then send the cap's next dialog line.
         emit showCaptain();
-        emit sendCaptainText(QString::fromStdString(*captainTalking));
-        advance(captainTalking,1);
+        sendCaptainDialog(QString::fromStdString(*captainRanting));
+        advance(captainRanting,1);
     }
     else
     {
         advance(captainDialogIt,1);
-        captainTalking = (*captainDialogIt).begin();
+        captainRanting = (*captainDialogIt).begin();
         captainFinishedTalking();
     }
 }
 
 void Model::displayLetter()
 {
+    if (sendingMorse)
+    {
+        QTimer::singleShot(500, this, [this] {displayLetter();});
+        return;
+    }
+
     advance(letterLevelsIt, 1);
     string letter(1, *letterLevelsIt);
     emit showCaptain();
-    emit sendCaptainText(QString::fromStdString(*captainTalking));
-    advance(captainTalking, 1);
+    sendCaptainDialog(QString::fromStdString(*captainRanting));
+    advance(captainRanting, 1);
     emit clearMorseBox();
     emit sendMorse(letter);
 }
 
 void Model::practiceLetter()
 {
+    if (sendingMorse)
+    {
+        QTimer::singleShot(500, this, [this] {practiceLetter();});
+        return;
+    }
+
     // enable text box etc.
     awaitingAnswer = true;
     string letter;
@@ -113,8 +129,8 @@ void Model::practiceLetter()
 
     // send cap's dialog
     emit showCaptain();
-    emit sendCaptainText(QString::fromStdString(*captainTalking));
-    advance(captainTalking, 1);
+    sendCaptainDialog(QString::fromStdString(*captainRanting));
+    advance(captainRanting, 1);
 
     // display the letter
     emit clearMorseBox();
@@ -124,6 +140,10 @@ void Model::practiceLetter()
 
 void Model::textInputEntered(QString text)
 {
+    // If the user is inputing things when they don't need to be, ignore it.
+    if (!awaitingAnswer || sendingMorse || captainTalking)
+        return;
+
     emit hideCaptain();
     if (!awaitingAnswer)
         return;
@@ -145,7 +165,7 @@ void Model::letterTextInput(QString text)
     else
     {
         emit showCaptain();
-        emit sendCaptainText("Oops, that's not quite right! Give it another try.");
+        sendCaptainDialog("Oops, that's not quite right! Give it another try.");
     }
 }
 
@@ -182,7 +202,7 @@ void Model::wordTextInput(QString text)
         resetStreak();
         incorrectString.erase(incorrectString.end()-2, incorrectString.end());
         emit showCaptain();
-        emit sendCaptainText(incorrectString);
+        sendCaptainDialog(incorrectString);
     }
     else
     {
@@ -265,7 +285,7 @@ void Model::fillCaptainDialogList()
     }
 
     captainDialogIt = captainDialog.begin();
-    captainTalking = captainDialog.front().begin();
+    captainRanting = captainDialog.front().begin();
     file.close();
 }
 
@@ -421,10 +441,23 @@ void Model::pickRandomWord()
 
 void Model::assessmentStarted()
 {
+    // if in the middle of sending a morse message, wait until it's finished.
+    if (sendingMorse)
+    {
+        QTimer::singleShot(500, this, [this] {assessmentStarted();});
+        return;
+    }
+
     //Start assessment and send it to the user to decode.
     takingAssessment = true;
     emit clearMorseBox();
     message = *assessmentsIt;
     advance(assessmentsIt, 1);
     sendMorse(message);
+}
+
+void Model::sendCaptainDialog(QString text)
+{
+    captainTalking = true;
+    emit sendCaptainText(text);
 }
