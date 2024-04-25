@@ -110,10 +110,6 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     connect(captainTimer, &QTimer::timeout, this, &MainWindow::moveCaptain);
     captainTimer->start(50);
     captainElapsedTime = 0;
-
-    //test, delete later
-    referenceSheetDialog->setModal(true);
-    referenceSheetDialog->show();
 }
 
 MainWindow::~MainWindow()
