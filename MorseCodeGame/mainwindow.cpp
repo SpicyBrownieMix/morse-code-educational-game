@@ -134,6 +134,8 @@ void MainWindow::startNewGame()
     ui->captainPicture->setVisible(true);
     ui->CaptainDialogueText->setVisible(true);
     ui->textInputBox->setVisible(true);
+    ui->aboutButton->setVisible(false);
+    ui->aboutButton->setEnabled(false);
 }
 
 void MainWindow::textEditingComplete()
@@ -192,7 +194,7 @@ void MainWindow::typeCaptainText()
     toBeTyped = toBeTyped.mid(1);
     typingText.append(c);
     ui->CaptainDialogueText->setText(typingText);
-    QTimer::singleShot(30, this, &MainWindow::typeCaptainText);
+    QTimer::singleShot(40, this, &MainWindow::typeCaptainText);
 }
 
 void MainWindow::showReferenceSheet()
