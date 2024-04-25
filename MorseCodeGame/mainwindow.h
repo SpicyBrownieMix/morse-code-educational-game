@@ -8,6 +8,7 @@
 #include <QString>
 #include "referencesheetdialog.h"
 #include "showalldialog.h"
+#include "aboutdialog.h"
 
 /** This class was made for the Assignment 9, Educational App, in CS3505 at the University of Utah.
  *
@@ -108,6 +109,12 @@ public slots:
     void showEntireMessage();
 
     /**
+     * @brief showAbout
+     * Displays the entire about window.
+     */
+    void showAbout();
+
+    /**
      * @brief showCurrentStreak
      * updates the streak on screen, and shows/hides the button to take the assessment
      *
@@ -156,8 +163,9 @@ private:
     QAudioOutput *dotAudioOutput; // audio output for the dot sound.
     QMediaPlayer *dashPlayer; // media player for the dash sound.
     QAudioOutput *dashAudioOutput; // audio output for the dash sound.
-    ReferenceSheetDialog* referenceSheetDialog;
-    ShowAllDialog* showAllDialog;
+    ReferenceSheetDialog* referenceSheetDialog; // reference sheet dialog window
+    ShowAllDialog* showAllDialog; // entire message dialog window
+    AboutDialog* aboutDialog; // entire message dialog window
     QString typingText; // the captain's dialog text that has already been typed
     QString toBeTyped; // the captain's dialog text that has yet to be typed.
     float elapsedTime; //The elapsed time for the ship movement

@@ -56,6 +56,7 @@ SOURCES += \
     Box2D/Dynamics/b2World.cpp \
     Box2D/Dynamics/b2WorldCallbacks.cpp \
     Box2D/Rope/b2Rope.cpp \
+    aboutdialog.cpp \
     main.cpp \
     mainwindow.cpp \
     model.cpp \
@@ -110,12 +111,14 @@ HEADERS += \
     Box2D/Dynamics/b2World.h \
     Box2D/Dynamics/b2WorldCallbacks.h \
     Box2D/Rope/b2Rope.h \
+    aboutdialog.h \
     mainwindow.h \
     model.h \
     referencesheetdialog.h \
     showalldialog.h
 
 FORMS += \
+    aboutdialog.ui \
     mainwindow.ui \
     referencesheetdialog.ui \
     showalldialog.ui

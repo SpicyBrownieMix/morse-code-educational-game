@@ -28,6 +28,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 
     referenceSheetDialog = new ReferenceSheetDialog(this);
     showAllDialog = new ShowAllDialog(this);
+    aboutDialog = new AboutDialog(this);
 
     //Set initial visibilites
     ui->CaptainDialogueBox->setVisible(false);
@@ -74,6 +75,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     // popups
     connect(ui->referenceSheetButton, &QPushButton::clicked, this, &MainWindow::showReferenceSheet);
     connect(ui->showAllButton, &QPushButton::clicked, this, &MainWindow::showEntireMessage);
+    connect(ui->aboutButton, &QPushButton::clicked, this, &MainWindow::showAbout);
 
     // streak connections
     connect(&model, &Model::updateStreak, this, &MainWindow::showCurrentStreak);
@@ -114,6 +116,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     connect(captainTimer, &QTimer::timeout, this, &MainWindow::moveCaptain);
     captainTimer->start(50);
     captainElapsedTime = 0;
+
 }
 
 MainWindow::~MainWindow()
@@ -197,6 +200,12 @@ void MainWindow::showReferenceSheet()
     emit refrenceOpened();
     referenceSheetDialog->setModal(true);
     referenceSheetDialog->show();
+}
+
+void MainWindow::showAbout()
+{
+    aboutDialog->setModal(true);
+    aboutDialog->show();
 }
 
 void MainWindow::showEntireMessage()

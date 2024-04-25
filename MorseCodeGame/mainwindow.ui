@@ -1135,7 +1135,7 @@
     <property name="geometry">
      <rect>
       <x>280</x>
-      <y>280</y>
+      <y>140</y>
       <width>421</width>
       <height>141</height>
      </rect>
@@ -1193,6 +1193,25 @@
      <string>Translate Secret Message</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="aboutButton">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>280</y>
+      <width>421</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bauhaus 93</family>
+      <pointsize>45</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>About</string>
+    </property>
+   </widget>
    <zorder>background</zorder>
    <zorder>textInputBox</zorder>
    <zorder>morsePrinter</zorder>
@@ -1205,6 +1224,7 @@
    <zorder>assessmentButton</zorder>
    <zorder>startScreenBackground</zorder>
    <zorder>newGameButton</zorder>
+   <zorder>aboutButton</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -1212,7 +1232,7 @@
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>24</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

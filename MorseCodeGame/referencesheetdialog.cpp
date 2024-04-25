@@ -119,6 +119,6 @@ void ReferenceSheetDialog::addMorseCode(QVBoxLayout *layout, const QString &char
     QFont font;
     font.setPointSize(25);
     label->setFont(font);
-    label->setText(QString("%1  %2").arg(character).arg(code));
+    label->setText(QString(character + " " + code));
     layout->addWidget(label);
 }

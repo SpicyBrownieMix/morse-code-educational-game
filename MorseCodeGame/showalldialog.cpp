@@ -1,11 +1,9 @@
 #include "showalldialog.h"
 #include "ui_showalldialog.h"
-#include <QDebug>
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QString>
 #include <QFont>
-#include <QDebug>
 
 /** This class was made for the Assignment 9, Educational App, in CS3505 at the University of Utah.
  *

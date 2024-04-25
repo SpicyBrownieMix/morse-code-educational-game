@@ -8,7 +8,7 @@
 /** This class was made for the Assignment 9, Educational App, in CS3505 at the University of Utah.
  *
  * @brief The ReferenceSheetDialog class
- * This calss controls the Reference Sheet Popoup box that appears when the user clicks on the
+ * This class controls the Reference Sheet Popoup box that appears when the user clicks on the
  * reference sheet button. This class is primarily just responsible for setting up the ui, and has
  * little associated logic.
  *
