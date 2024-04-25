@@ -16,6 +16,7 @@ ShowAllDialog::ShowAllDialog(QWidget *parent)
     QFont font;
     font.setPointSize(40);
     label->setFont(font);
+    label->setWordWrap(true);
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->addWidget(label, 0, Qt::AlignTop);
     setLayout(layout);
