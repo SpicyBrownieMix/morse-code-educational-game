@@ -9,6 +9,17 @@
 #include "referencesheetdialog.h"
 #include "showalldialog.h"
 
+/** This class was made for the Assignment 9, Educational App, in CS3505 at the University of Utah.
+ *
+ * @brief The MainWindow class
+ * The MainWindow class is the view of the application, which is responsible for displaying all visual and audio components of the game.
+ * It acts as the view in the model-view separation of concerns system. It connects all signals and slots, visually
+ * draws the images on the screen, plays audio and provides a way to connect user inputs and visual changes to the Model closs.
+ *
+ * @version April 2024
+ * @author Eva Giddings, Kaiya McCombs, Rishab Dixit, Spencer Hoth, Ryan Beard
+ */
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE

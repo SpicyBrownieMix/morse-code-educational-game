@@ -7,6 +7,15 @@
 
 using namespace std;
 
+/** This class was made for the Assignment 9, Educational App, in CS3505 at the University of Utah.
+ *
+ * @brief The Model class
+ * This class implemnts the methods outlined in the Model.h class
+ *
+ * @version April 2024
+ * @author Eva Giddings, Kaiya McCombs, Rishab Dixit, Spencer Hoth, Ryan Beard
+ */
+
 Model::Model(QObject *parent) : QObject{parent}
 {
     onScreenLetterCounter = 0;

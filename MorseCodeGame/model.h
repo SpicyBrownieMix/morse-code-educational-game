@@ -6,6 +6,17 @@
 #include <Box2D/Box2D.h>
 #include <list>
 
+/** This class was made for the Assignment 9, Educational App, in CS3505 at the University of Utah.
+ *
+ * @brief The Model class
+ * This class represents the model in the model-view separation of concerns system. This contains
+ * the back-end logic to interacting with the view. This class controlls the progression of the game,
+ * checks input, opens, stores and uses data from all files, and generally handles all game logic.
+ *
+ * @version April 2024
+ * @author Eva Giddings, Kaiya McCombs, Rishab Dixit, Spencer Hoth, Ryan Beard
+ */
+
 class Model : public QObject
 {
     Q_OBJECT

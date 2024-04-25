@@ -5,6 +5,15 @@
 #include <QHBoxLayout>
 #include <QString>
 
+/** This class was made for the Assignment 9, Educational App, in CS3505 at the University of Utah.
+ *
+ * @brief The ReferenceSheetDialog class
+ * This class implemnts the methods outlined in the ReferenceSheetDialog.h class
+ *
+ * @version April 2024
+ * @author Spencer Hoth
+ */
+
 ReferenceSheetDialog::ReferenceSheetDialog(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::ReferenceSheetDialog)
