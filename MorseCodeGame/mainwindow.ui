@@ -1162,6 +1162,33 @@
       <height>32</height>
      </rect>
     </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="216">
+          <red>72</red>
+          <green>33</green>
+          <blue>19</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="216">
+          <red>72</red>
+          <green>33</green>
+          <blue>19</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled/>
+     </palette>
+    </property>
     <property name="text">
      <string>Translate Secret Message</string>
     </property>
@@ -1185,7 +1212,7 @@
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>37</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>

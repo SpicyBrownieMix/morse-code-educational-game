@@ -65,8 +65,8 @@ Let me know when you get there!
 pw
 
 You've gotten 5 in a row right already! Wow, that's mighty impressive. Well, it looks like we have a slightly more complex message incoming from headquarters.... if you can translate this correctly, I'll show you some new letters.
+But if you don't feel ready for that yet, don't frett! feel free to keep practicing as long as you like. Once you're ready, you can press the button in the top right corner to translate the top sectet message.
 Keep in mind, a longer pause that is equivalent to the length of a dash means a space between words.
-Also, if you look at the "Show Entire Message" button, a slash (/) represents a space.
 pw
 
 Great Job rookie! We'd better change our course and make sure we're in the right terrian. Good to know you're looking out for us. I'll get on those course corrections A.S.A.P.
@@ -99,9 +99,13 @@ pl
 Perfect! And this?
 
 You're a natural. That's all for now, but keep up the good work and you'll have a full vocabulary soon. remember, if you get 5 right without looking at the reference sheet, let me know and I'll teach you some new letters!
+pw
 
 Wow, 5 more correct already? You're going to be up to speed in no time!
-Hmm... looks like we're getting another secret message from headquarters... If you can translate this, you'll be ready to learn a few more letters.
+Hmm... looks like we're getting another secret message from headquarters...
+Go ahead and translate it when you're ready. If you can get it, you'll be ready to learn a few more letters.
+pw
+
 Huh, just a weather update I guess.... well, nontheless, great job to you! Let's learn a few more, shall we?
 dl
 
@@ -131,9 +135,12 @@ pl
 Amazing! And this?
 
 You continue to impress. Well, I'll let you get back too it. If I see you keep up this great work, we'll add some more letters to your vocablary.
+pw
 
 Wow, so many correct already? You might just be suited for this job.
-Hmm... looks like we're getting another secret message from headquarters... If you can translate this, you'll be ready to learn a few more letters.
+Hmm... looks like we're getting another secret message from headquarters...
+Go ahead and translate it when you're ready. If you can get it, you'll be ready to learn a few more letters.
+pw
 
 Wow! Alright then, let's learn a few more, shall we?
 dl
@@ -164,9 +171,12 @@ pl
 Amazing! And this?
 
 You continue to impress. Well, I'll let you get back too it. If I see you keep up this great work, we'll add some more letters to your vocablary.
+pw
 
 You're outstanding rookie! You keep soaking up these letters like nobody's business.
-Hmm... looks like we're getting another secret message from headquarters... If you can translate this, you'll be ready to learn a few more letters.
+Hmm... looks like we're getting another secret message from headquarters...
+Go ahead and translate it when you're ready. If you can get it, you'll be ready to learn a few more letters.
+pw
 
 Wow! Alright then, let's learn a few more, shall we?
 dl
@@ -197,9 +207,12 @@ pl
 Amazing! And this?
 
 You continue to impress. Well, I'll let you get back too it. If I see you keep up this great work, we'll add some more letters to your vocablary.
+pw
 
 By golly, you've almost learned the whole alphabet by now! We only have 4 more letters to go, and then you'll be a master!
-Hmm... looks like we're getting another secret message from headquarters... If you can translate this, you'll be ready to learn a few more letters.
+Hmm... looks like we're getting another secret message from headquarters...
+Go ahead and translate it when you're ready. If you can get it, you'll be ready for those last few letters!
+pw
 
 Wow! Alright then, let's finish this up!
 dl
@@ -231,13 +244,16 @@ Amazing! And this?
 
 Wow!! And that's it, then end of the Alphabet! If you really get the hang of these last few letters, we'll be able to promote you to our year-round communications officer! Trust me, that comes with a nice pay raise.
 You just keep up the great work and keep practicing. Let me know when you feel like you're ready for me to check your progress.
+pw
 
 Man rookie, the last guy who did this could never be as good as you are now. I'm impressed. No one has ever learned this fast.
 Well, we've got a message of the utmost importance from headquarters... It looks a litte complex, but I feel like I can entrust it to you. Do you feel ready rookie?
-Doesn't matter!! No one ever feels ready. Anyways, let's do it! I believe in you.
+Doesn't matter!! No one ever feels ready! I believe in you.
+Well, actually... it's probably not that urgent. So whenever you're ready!
+pw
 
 Wow, you really just saved us! If we hadn't known, we'd have run right into enemy territory!
 Well, I can offically say, you're our best comminucations officer ever. The USS Blackfin is lucky to have you. I'm almost a bit sad to not be teaching you anymore...
 Well, anyways, I'll be around. If you'd like to stay with us and keep translating messages, feel free to do so, or come back at any time. But, if you have bigger things to get to now that you're a morse code master, I understand. Just don't forget me!
 Good luck in your endeavors!
-
+pw
