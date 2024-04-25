@@ -3,6 +3,7 @@
 #include <QTextStream>
 #include <QTimer>
 #include <list>
+#include <QDebug>
 
 using namespace std;
 
@@ -310,7 +311,8 @@ void Model::setUpTextfile()
 {
     QString filename;
     currentWords.clear();
-
+    emit sendLevel(level);
+    //qDebug() << "Level:" << level;
     if (level == 1)
         filename = ":/assets/levelOneWords";
     else if (level == 2)

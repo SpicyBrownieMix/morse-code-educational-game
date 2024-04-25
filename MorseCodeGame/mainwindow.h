@@ -81,6 +81,13 @@ public slots:
      */
     void showAssessment();
 
+    /**
+     * @brief receiveLevelNumber
+     * @param level integer representing current level
+     * Receives the current stored level number from the model.
+     */
+    void receiveLevelNumber(int level);
+
 private:
     Ui::MainWindow *ui; // ui
     Model* model; // the ui's copy of the model.

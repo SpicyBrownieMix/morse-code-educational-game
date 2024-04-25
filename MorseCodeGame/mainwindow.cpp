@@ -5,6 +5,7 @@
 #include "referencesheetdialog.h"
 #include "showalldialog.h"
 #include <Box2D/Box2D.h>
+#include <QDebug>
 
 using std::string;
 
@@ -82,6 +83,9 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     //send entire message
     connect(&model, &Model::sendFullMessage, this, &MainWindow::receiveFullMessage);
 
+    //reference sheet
+    connect(&model, &Model::sendLevel, this, &MainWindow::receiveLevelNumber);
+
     //assessment connection
     connect(ui->assessmentButton, &QPushButton::pressed, &model, &Model::assessmentStarted);
 
@@ -106,6 +110,10 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     connect(captainTimer, &QTimer::timeout, this, &MainWindow::moveCaptain);
     captainTimer->start(50);
     captainElapsedTime = 0;
+
+    //test, delete later
+    referenceSheetDialog->setModal(true);
+    referenceSheetDialog->show();
 }
 
 MainWindow::~MainWindow()
@@ -298,6 +306,11 @@ void MainWindow::startMoving()
 void MainWindow::receiveFullMessage(string s)
 {
     showAllDialog->setText(s);
+}
+
+void  MainWindow::receiveLevelNumber(int level)
+{
+    referenceSheetDialog->setBatch(level);
 }
 
 void MainWindow::showAssessment()

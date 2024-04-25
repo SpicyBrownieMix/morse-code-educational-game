@@ -94,6 +94,8 @@ signals:
      */
     void updateStreak(int streak, bool assessmentUnlocked);
 
+    void sendLevel(int level);
+
     void sendFullMessage(std::string text);
 
     /**
@@ -107,6 +109,13 @@ signals:
      * The streak is high enough to continue to the assesment if desired.
      */
     void streakHighEnough();
+
+    /**
+     * @brief sendLevelNumber
+     * @param level integer representing current level
+     * Sends the current stored level number to the view
+     */
+    //void sendLevelNumber(int level);
 
 private:
     std::map<char,std::string> MORSE_ALPHABET; // maps the letters of the alphabet to morse code
