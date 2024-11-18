@@ -12,8 +12,10 @@ The application follows the model-view design principle:
 
 - **Progressive Learning**: The game is structured into 6 levels. Each level introduces 4-6 new letters, starting with AIERNT.
 - **Guided Learning**: The "Captain" character provides instructions and guidance, helping users learn and practice Morse code.
+- **Assessments**: Assessments are provided at the end of each level to determine what the user needs more practice with.
 - **Interactive Learning**: Users engage in listening to the captain, practicing individual letters, forming words with learned letters, and taking assessments to progress through levels.
 - **Continuous Practice**: After completing all levels, users can continue to practice as much as they want.
+
 
 ### Artwork
 
